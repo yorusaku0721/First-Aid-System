@@ -294,6 +294,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
+<<<<<<< HEAD
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -302,6 +303,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
+=======
+        "DisplayMode",
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -455,7 +459,11 @@
         {
           "Category": "Design",
           "PropertyName": "DisplayMode",
+<<<<<<< HEAD
           "RuleProviderType": "User"
+=======
+          "RuleProviderType": "Unknown"
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
         },
         {
           "Category": "Design",
@@ -630,6 +638,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
+<<<<<<< HEAD
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -638,6 +647,9 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
+=======
+        "DisplayMode",
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -798,7 +810,11 @@
         {
           "Category": "Design",
           "PropertyName": "DisplayMode",
+<<<<<<< HEAD
           "RuleProviderType": "User"
+=======
+          "RuleProviderType": "Unknown"
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
         },
         {
           "Category": "Design",

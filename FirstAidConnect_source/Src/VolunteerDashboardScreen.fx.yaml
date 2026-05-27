@@ -206,12 +206,15 @@ VolunteerDashboardScreen As screen:
         DisabledBorderColor: =RGBA(244, 244, 244, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
+<<<<<<< HEAD
         DisplayMode: |-
             =If(
                 !IsBlank(varCurrentVolunteer.CurrentTask),
                 DisplayMode.Disabled,
                 DisplayMode.Edit
             )
+=======
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
         Fill: |-
             =ColorValue("#16A34A")
         Font: =App.Theme.Font
@@ -223,6 +226,7 @@ VolunteerDashboardScreen As screen:
         HoverFill: |-
             =ColorValue("#15803D")
         OnSelect: |-
+<<<<<<< HEAD
             =If(
                 !IsBlank(varCurrentVolunteer.CurrentTask),
             
@@ -254,6 +258,25 @@ VolunteerDashboardScreen As screen:
                     "Status updated to Available.",
                     NotificationType.Success
                 )
+=======
+            =Patch(
+                Volunteers,
+                varCurrentVolunteer,
+                {
+                    Status: {Value: "Available"},
+                    CurrentTask: ""
+                }
+            );
+            
+            Set(
+                varCurrentVolunteer,
+                LookUp(Volunteers, ID = varCurrentVolunteer.ID)
+            );
+            
+            Notify(
+                "Status updated to Available.",
+                NotificationType.Success
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
             )
         PressedBorderColor: =App.Theme.Colors.Darker40
         PressedColor: |-
@@ -323,12 +346,15 @@ VolunteerDashboardScreen As screen:
         DisabledBorderColor: =RGBA(244, 244, 244, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
+<<<<<<< HEAD
         DisplayMode: |-
             =If(
                 !IsBlank(varCurrentVolunteer.CurrentTask),
                 DisplayMode.Disabled,
                 DisplayMode.Edit
             )
+=======
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
         Fill: |-
             =ColorValue("#F59E0B")
         Font: =App.Theme.Font
@@ -340,6 +366,7 @@ VolunteerDashboardScreen As screen:
         HoverFill: |-
             =ColorValue("#D97706")
         OnSelect: |-
+<<<<<<< HEAD
             =If(
                 !IsBlank(varCurrentVolunteer.CurrentTask),
             
@@ -370,6 +397,24 @@ VolunteerDashboardScreen As screen:
                     "Status updated to On Break.",
                     NotificationType.Success
                 )
+=======
+            =Patch(
+                Volunteers,
+                varCurrentVolunteer,
+                {
+                    Status: {Value: "On Break"}
+                }
+            );
+            
+            Set(
+                varCurrentVolunteer,
+                LookUp(Volunteers, ID = varCurrentVolunteer.ID)
+            );
+            
+            Notify(
+                "Status updated to On Break.",
+                NotificationType.Success
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
             )
         PressedBorderColor: =App.Theme.Colors.Darker40
         PressedColor: |-

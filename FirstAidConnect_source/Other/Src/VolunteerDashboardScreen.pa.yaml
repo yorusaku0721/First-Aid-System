@@ -141,18 +141,22 @@ Screens:
             BorderColor: =ColorValue("#16A34A")
             BorderThickness: =1
             Color: =Color.White
+<<<<<<< HEAD
             DisplayMode: |-
               =If(
                   !IsBlank(varCurrentVolunteer.CurrentTask),
                   DisplayMode.Disabled,
                   DisplayMode.Edit
               )
+=======
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
             Fill: =ColorValue("#16A34A")
             FontWeight: =FontWeight.Bold
             Height: =58
             HoverColor: =ColorValue("#FFFFFF")
             HoverFill: =ColorValue("#15803D")
             OnSelect: |-
+<<<<<<< HEAD
               =If(
                   !IsBlank(varCurrentVolunteer.CurrentTask),
 
@@ -184,6 +188,25 @@ Screens:
                       "Status updated to Available.",
                       NotificationType.Success
                   )
+=======
+              =Patch(
+                  Volunteers,
+                  varCurrentVolunteer,
+                  {
+                      Status: {Value: "Available"},
+                      CurrentTask: ""
+                  }
+              );
+
+              Set(
+                  varCurrentVolunteer,
+                  LookUp(Volunteers, ID = varCurrentVolunteer.ID)
+              );
+
+              Notify(
+                  "Status updated to Available.",
+                  NotificationType.Success
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
               )
             PressedColor: =ColorValue("#FFFFFF")
             PressedFill: =ColorValue("#166534")
@@ -234,18 +257,22 @@ Screens:
             BorderColor: =ColorValue("#F59E0B")
             BorderThickness: =1
             Color: =Color.White
+<<<<<<< HEAD
             DisplayMode: |-
               =If(
                   !IsBlank(varCurrentVolunteer.CurrentTask),
                   DisplayMode.Disabled,
                   DisplayMode.Edit
               )
+=======
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
             Fill: =ColorValue("#F59E0B")
             FontWeight: =FontWeight.Bold
             Height: =58
             HoverColor: =ColorValue("#FFFFFF")
             HoverFill: =ColorValue("#D97706")
             OnSelect: |-
+<<<<<<< HEAD
               =If(
                   !IsBlank(varCurrentVolunteer.CurrentTask),
 
@@ -276,6 +303,24 @@ Screens:
                       "Status updated to On Break.",
                       NotificationType.Success
                   )
+=======
+              =Patch(
+                  Volunteers,
+                  varCurrentVolunteer,
+                  {
+                      Status: {Value: "On Break"}
+                  }
+              );
+
+              Set(
+                  varCurrentVolunteer,
+                  LookUp(Volunteers, ID = varCurrentVolunteer.ID)
+              );
+
+              Notify(
+                  "Status updated to On Break.",
+                  NotificationType.Success
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
               )
             PressedColor: =ColorValue("#FFFFFF")
             PressedFill: =ColorValue("#B45309")

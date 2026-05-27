@@ -2828,6 +2828,7 @@
           },
           "ruleId": "app-UnusedMediaResources",
           "ruleIndex": 7
+<<<<<<< HEAD
         },
         {
           "locations": [
@@ -3398,6 +3399,8 @@
           },
           "ruleId": "app-CrossScreenEventDependencies",
           "ruleIndex": 8
+=======
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
         }
       ],
       "tool": {
@@ -3546,6 +3549,7 @@
                 "primaryCategory": "performance",
                 "whyFix": "This media file is not referenced by any control formulas so it is not needed. Removing it will improve performance."
               }
+<<<<<<< HEAD
             },
             {
               "id": "app-CrossScreenEventDependencies",
@@ -3563,6 +3567,8 @@
                 "primaryCategory": "performance",
                 "whyFix": "Event rules (such as OnStart, OnVisible, and OnSelect) that reference controls on other screens force those screens to load and initialize early, even if the user never navigates to them. This can noticeably slow app start-up and navigation."
               }
+=======
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
             }
           ],
           "version": "1.349"

@@ -7,7 +7,11 @@
     "connectionRef": {
       "apiTier": "Standard",
       "displayName": "SharePoint",
+<<<<<<< HEAD
       "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+=======
+      "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1809/1.0.1809.4714/sharepointonline/icon.png",
+>>>>>>> a2ea9f5708b49b0d65273430a873e6a66cedc58e
       "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
       "parameterHints": {},
       "parameterHintsV2": {}
