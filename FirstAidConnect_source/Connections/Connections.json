@@ -1,0 +1,39 @@
+{
+  "aeeb6439-1db3-4df0-b8b4-40cc9179f118": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://static.powerapps.com/resource/ppcr/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://unisydneyedu-my.sharepoint.com/personal/sili0424_uni_sydney_edu_au/_layouts/15/lists.aspx": {
+        "dataSources": {
+          "Incidents": {
+            "tableName": "bf422ef1-c350-43df-8e99-55aa2cb83c5c"
+          },
+          "Shifts": {
+            "tableName": "0f82be8b-a81e-487b-8f32-4e1a8127c496"
+          },
+          "Volunteers": {
+            "tableName": "4dc49bab-4fe9-4494-a92a-f5eacb28736b"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Incidents",
+      "Volunteers",
+      "Shifts"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "aeeb6439-1db3-4df0-b8b4-40cc9179f118"
+  }
+}

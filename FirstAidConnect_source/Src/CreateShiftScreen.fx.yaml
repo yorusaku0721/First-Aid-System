@@ -1,0 +1,457 @@
+CreateShiftScreen As screen:
+    Fill: |-
+        =ColorValue("#F8FAFC")
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    btnCreateShiftBack As modernButton:
+        Align: =Align.Justify
+        Appearance: =ButtonAppearance.Secondary
+        BasePaletteColor: =Color.Transparent
+        BorderColor: =Color.Transparent
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        Color: |-
+            =ColorValue("#2563EB")
+        Font: =""
+        Height: =64
+        OnSelect: =Navigate(AdminDashboardScreen, ScreenTransition.Fade)
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Size: =24
+        Text: ="< Back"
+        Width: =113
+        X: =10
+        Y: =5
+        ZIndex: =1
+
+    lblCreateShiftTitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =34
+        Text: ="Create Shift"
+        Width: =291
+        X: =175
+        Y: =43
+        ZIndex: =2
+
+    lblCreateShiftSubtitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#64748B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =52
+        Size: =16
+        Text: ="Assign a volunteer to a duty shift."
+        Width: =560
+        X: =40
+        Y: =95
+        ZIndex: =3
+
+    lblShiftVolunteer As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        Size: =23
+        Text: ="Volunteer"
+        Width: =155
+        X: =21
+        Y: =159
+        ZIndex: =4
+
+    drpShiftVolunteer As dropdown:
+        BorderColor: |-
+            =ColorValue("#CBD5E1")
+        ChevronBackground: |-
+            =ColorValue("#FFFFFF")
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: |-
+            =ColorValue("#2563EB")
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: |-
+            =ColorValue("#94A3B8")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#F8FAFC")
+        Items: =Volunteers
+        PressedBorderColor: |-
+            =ColorValue("#2563EB")
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#EFF6FF")
+        SelectionColor: |-
+            =ColorValue("#1D4ED8")
+        SelectionFill: |-
+            =ColorValue("#DBEAFE")
+        Size: =20
+        Width: =575
+        X: =33
+        Y: =216
+        ZIndex: =5
+
+    lblShiftDate As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =48
+        Size: =23
+        Text: ="Shift Date"
+        Width: =166
+        X: =21
+        Y: =301
+        ZIndex: =6
+
+    dateShift As datepicker:
+        BorderColor: |-
+            =ColorValue("#CBD5E1")
+        CalendarHeaderFill: =App.Theme.Colors.Primary
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverDateFill: =App.Theme.Colors.Lighter70
+        IconBackground: |-
+            =ColorValue("#FFFFFF")
+        IconFill: =Color.Black
+        SelectedDateFill: =App.Theme.Colors.Primary
+        Size: =20
+        Width: =575
+        X: =33
+        Y: =361
+        ZIndex: =7
+
+    lblStartTime As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =48
+        Size: =23
+        Text: ="Start Time"
+        Width: =166
+        X: =21
+        Y: =446
+        ZIndex: =8
+
+    txtStartTime As text:
+        BorderColor: |-
+            =ColorValue("#CBD5E1")
+        BorderThickness: =2
+        Color: |-
+            =ColorValue("#0F172A")
+        Default: =""
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        FocusedBorderThickness: =4
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HintText: |-
+            ="08:00"
+        HoverBorderColor: |-
+            =ColorValue("#94A3B8")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#F8FAFC")
+        PressedBorderColor: |-
+            =ColorValue("#2563EB")
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#EFF6FF")
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =21
+        Width: =575
+        X: =33
+        Y: =506
+        ZIndex: =9
+
+    lblEndTime As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =48
+        Size: =23
+        Text: ="End Time"
+        Width: =166
+        X: =21
+        Y: =591
+        ZIndex: =10
+
+    txtEndTime As text:
+        BorderColor: |-
+            =ColorValue("#CBD5E1")
+        BorderThickness: =2
+        Color: |-
+            =ColorValue("#0F172A")
+        Default: =""
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        FocusedBorderThickness: =4
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HintText: |-
+            ="14:00"
+        HoverBorderColor: |-
+            =ColorValue("#94A3B8")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#F8FAFC")
+        PressedBorderColor: |-
+            =ColorValue("#2563EB")
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#EFF6FF")
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =21
+        Width: =575
+        X: =33
+        Y: =651
+        ZIndex: =11
+
+    lblShiftRole As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =48
+        Size: =23
+        Text: ="Role"
+        Width: =166
+        X: =22
+        Y: =736
+        ZIndex: =12
+
+    drpShiftRole As dropdown:
+        BorderColor: |-
+            =ColorValue("#CBD5E1")
+        ChevronBackground: |-
+            =ColorValue("#FFFFFF")
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: |-
+            =ColorValue("#2563EB")
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: |-
+            =ColorValue("#94A3B8")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#F8FAFC")
+        Items: =["First Aider", "Paramedic", "Nurse", "Team Lead"]
+        PressedBorderColor: |-
+            =ColorValue("#2563EB")
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#EFF6FF")
+        SelectionColor: |-
+            =ColorValue("#1D4ED8")
+        SelectionFill: |-
+            =ColorValue("#DBEAFE")
+        Size: =20
+        Width: =575
+        X: =33
+        Y: =796
+        ZIndex: =13
+
+    lblShiftSector As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =48
+        Size: =23
+        Text: ="Sector"
+        Width: =166
+        X: =22
+        Y: =881
+        ZIndex: =14
+
+    drpShiftSector As dropdown:
+        BorderColor: |-
+            =ColorValue("#CBD5E1")
+        ChevronBackground: |-
+            =ColorValue("#FFFFFF")
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: |-
+            =ColorValue("#2563EB")
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: |-
+            =ColorValue("#94A3B8")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#F8FAFC")
+        Items: =["Main Stage", "Food Court", "Entry Gate", "Camping Area", "Roaming"]
+        PressedBorderColor: |-
+            =ColorValue("#2563EB")
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#EFF6FF")
+        SelectionColor: |-
+            =ColorValue("#1D4ED8")
+        SelectionFill: |-
+            =ColorValue("#DBEAFE")
+        Size: =20
+        Width: =575
+        X: =33
+        Y: =941
+        ZIndex: =15
+
+    btnCreateShift As button:
+        BorderColor: =App.Theme.Colors.Primary
+        Color: =Color.White
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#2563EB")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =61
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        OnSelect: |-
+            =If(
+                IsBlank(drpShiftVolunteer.Selected.Name) ||
+                IsBlank(dateShift.SelectedDate) ||
+                IsBlank(txtStartTime.Text) ||
+                IsBlank(txtEndTime.Text) ||
+                IsBlank(drpShiftRole.Selected.Value) ||
+                IsBlank(drpShiftSector.Selected.Value),
+            
+                Notify(
+                    "Please complete all shift fields.",
+                    NotificationType.Error
+                ),
+            
+                Set(
+                    varNewShiftID,
+                    "S-" & Text(Today(), "yyyymmdd") & "-" & Text(CountRows(Shifts) + 1, "000")
+                );
+            
+                Patch(
+                    Shifts,
+                    Defaults(Shifts),
+                    {
+                        Title: varNewShiftID,
+                        ShiftID: varNewShiftID,
+                        VolunteerName: drpShiftVolunteer.Selected.Name,
+                        ShiftDate: dateShift.SelectedDate,
+                        StartTime: txtStartTime.Text,
+                        EndTime: txtEndTime.Text,
+                        Role: {Value: drpShiftRole.Selected.Value},
+                        Sector: {Value: drpShiftSector.Selected.Value}
+                    }
+                );
+            
+                Notify(
+                    "Shift created successfully.",
+                    NotificationType.Success
+                );
+            
+                Reset(txtStartTime);
+                Reset(txtEndTime);
+            
+                Navigate(
+                    AdminDashboardScreen,
+                    ScreenTransition.Fade
+                )
+            )
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =24
+        Text: ="CREATE SHIFT"
+        Width: =575
+        X: =33
+        Y: =1034
+        ZIndex: =16
+

@@ -1,0 +1,390 @@
+FirstAidGuideScreen As screen:
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    btnGuideBack As modernButton:
+        Align: =Align.Justify
+        Appearance: =ButtonAppearance.Secondary
+        BorderStyle: =BorderStyle.None
+        Color: |-
+            =ColorValue("#2563EB")
+        Font: =""
+        Height: =64
+        OnSelect: =Navigate(ResidentSOSScreen, ScreenTransition.Fade)
+        Size: =24
+        Text: ="< Back"
+        Width: =113
+        X: =10
+        Y: =5
+        ZIndex: =1
+
+    lblGuideTitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        Size: =24
+        Text: ="First Aid Guide"
+        Width: =290
+        Y: =253
+        ZIndex: =2
+
+    lblSOSHeader_1 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#991B1B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =88
+        Size: =28
+        Text: ="Request Medical Assistance"
+        Width: =505
+        X: =67
+        Y: =40
+        ZIndex: =3
+
+    lblSOSSubtitle_1 As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#64748B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =70
+        Size: =12
+        Text: ="Submit your location and emergency details so the first aid team can respond quickly."
+        Width: =436
+        X: =102
+        Y: =98
+        ZIndex: =4
+
+    Rectangle1_2 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: |-
+            =ColorValue("#E2E8F0")
+        Height: =1
+        Width: =Parent.Width
+        Y: =167
+        ZIndex: =5
+
+    Rectangle1_3 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: |-
+            =ColorValue("#E2E8F0")
+        Height: =1
+        Width: =Parent.Width
+        Y: =240
+        ZIndex: =6
+
+    btnResidentEmergencySOS_1 As button:
+        BorderColor: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#2563EB"),
+                ColorValue("#CBD5E1")
+            )
+        BorderThickness: =1
+        Color: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#FFFFFF"),
+                ColorValue("#334155")
+            )
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#2563EB"),
+                ColorValue("#FFFFFF")
+            )
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =42
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#FFFFFF"),
+                ColorValue("#334155")
+            )
+        HoverFill: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#2563EB"),
+                ColorValue("#F8FAFC")
+            )
+        OnSelect: |-
+            =Navigate(ResidentSOSScreen, ScreenTransition.Fade);
+            Set(varSelectedTab, "Emergency SOS")
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#1D4ED8"),
+                ColorValue("#EFF6FF")
+            )
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =16
+        Text: ="Emergency SOS"
+        Width: =181
+        X: =73
+        Y: =184
+        ZIndex: =7
+
+    btnResidentFirstAidGuide_1 As button:
+        BorderColor: |-
+            =If(
+                varSelectedTab = "First Aid Guide",
+                ColorValue("#2563EB"),
+                ColorValue("#CBD5E1")
+            )
+        BorderThickness: =1
+        Color: |-
+            =If(
+                varSelectedTab = "First Aid Guide",
+                ColorValue("#FFFFFF"),
+                ColorValue("#334155")
+            )
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =If(
+                varSelectedTab = "First Aid Guide",
+                ColorValue("#2563EB"),
+                ColorValue("#FFFFFF")
+            )
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =42
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#FFFFFF"),
+                ColorValue("#334155")
+            )
+        HoverFill: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#2563EB"),
+                ColorValue("#F8FAFC")
+            )
+        OnSelect: |-
+            =Navigate(FirstAidGuideScreen, ScreenTransition.Fade);
+            Set(varSelectedTab, "First Aid Guide")
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#1D4ED8"),
+                ColorValue("#EFF6FF")
+            )
+        PressedFill: =App.Theme.Colors.Darker40
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =16
+        Text: ="First Aid Guide"
+        Width: =181
+        X: =374
+        Y: =184
+        ZIndex: =8
+
+    lblGuideSubtitle As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#64748B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =70
+        Text: ="Quick reference for common emergencies. Always call 000 in a life-threatening emergency."
+        Width: =560
+        X: =33
+        Y: =304
+        ZIndex: =9
+
+    btnCPRCard As button:
+        BorderColor: |-
+            =ColorValue("#E2E8F0")
+        Color: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =
+        DisabledFill: =Color.White
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =Color.White
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =184
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =24
+        Text: =""
+        Width: =560
+        X: =40
+        Y: =400
+        ZIndex: =10
+
+    lblCPRTitle As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =54
+        Size: =21
+        Text: ="❤️ CPR"
+        Width: =121
+        X: =67
+        Y: =404
+        ZIndex: =11
+
+    lblCPRContent As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#475569")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =145
+        Size: =16
+        Text: |-
+            ="1. Check danger and response." & Char(10) &
+            "2. Call 000 and ask for an AED." & Char(10) &
+            "3. Open airway and check breathing." & Char(10) &
+            "4. If not breathing normally, start CPR."
+        Width: =513
+        X: =63
+        Y: =439
+        ZIndex: =12
+
+    btnCPRCard_1 As button:
+        BorderColor: |-
+            =ColorValue("#E2E8F0")
+        Color: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =
+        DisabledFill: =Color.White
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =Color.White
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =184
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =24
+        Text: =""
+        Width: =560
+        X: =40
+        Y: =623
+        ZIndex: =13
+
+    lblBleedingTitle As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: ="🩸 Severe Bleeding"
+        Width: =294
+        X: =67
+        Y: =623
+        ZIndex: =14
+
+    lblBleedingContent As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#475569")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =162
+        Size: =16
+        Text: |-
+            ="1. Apply firm direct pressure." & Char(10) &
+            "2. Use a dressing or clean cloth." & Char(10) &
+            "3. Keep pressure until help arrives." & Char(10) &
+            "4. Call 000 for severe bleeding."
+        Width: =537
+        X: =63
+        Y: =657
+        ZIndex: =15
+
+    btnCPRCard_2 As button:
+        BorderColor: |-
+            =ColorValue("#E2E8F0")
+        Color: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =
+        DisabledFill: =Color.White
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =Color.White
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =184
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =24
+        Text: =""
+        Width: =560
+        X: =40
+        Y: =844
+        ZIndex: =16
+
+    lblBurnTitle As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        Size: =21
+        Text: ="🔥 Burn"
+        Width: =140
+        X: =67
+        Y: =852
+        ZIndex: =17
+
+    lblBurnContent As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#475569")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =116
+        Size: =16
+        Text: |-
+            ="1. Cool burn under running water." & Char(10) &
+            "2. Remove tight items if safe." & Char(10) &
+            "3. Cover with clean dressing." & Char(10) &
+            "4. Seek medical help for serious burns."
+        Width: =537
+        X: =63
+        Y: =902
+        ZIndex: =18
+

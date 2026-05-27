@@ -1,0 +1,355 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ResidentSOSScreen:
+    Properties:
+      OnVisible: =Set(varResidentTab, "Emergency SOS")
+    Children:
+      - btnSOSBack:
+          Control: ModernButton@1.0.0
+          Properties:
+            Align: =Align.Justify
+            Appearance: =ButtonAppearance.Secondary
+            BorderStyle: =BorderStyle.None
+            Color: =ColorValue("#2563EB")
+            OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+            Text: ="< Back"
+            Width: =113
+            X: =10
+            Y: =5
+      - lblSOSHeader:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#991B1B")
+            FontWeight: =FontWeight.Bold
+            Height: =88
+            Size: =28
+            Text: ="Request Medical Assistance"
+            Width: =505
+            X: =67
+            Y: =40
+      - lblSOSSubtitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#64748B")
+            Size: =12
+            Text: ="Submit your location and emergency details so the first aid team can respond quickly."
+            Width: =436
+            X: =102
+            Y: =98
+      - lblIncidentType:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Semibold
+            Height: =43
+            Size: =22
+            Text: ="Incident Type"
+            Width: =199
+            X: =67
+            Y: =247
+      - drpIncidentType:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            BorderColor: =ColorValue("#94A3B8")
+            ChevronBackground: =RGBA(255, 255, 255, 1)
+            ChevronFill: =ColorValue("#0F172A")
+            ChevronHoverBackground: =ColorValue("#FFFFFF")
+            Color: =ColorValue("#0F172A")
+            Fill: =ColorValue("#FFFFFF")
+            Height: =53
+            HoverBorderColor: =ColorValue("#991B1B")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#FFFFFF")
+            Items: =["SOS Emergency", "Cardiac", "Trauma", "Laceration", "Heat Stress", "Burn", "Other"]
+            Items.Value: =Value
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#FEF2F2")
+            SelectionColor: =ColorValue("#991B1B")
+            SelectionFill: =ColorValue("#FEF2F2")
+            Size: =18
+            Width: =478
+            X: =74
+            Y: =293
+      - lblLocation:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Semibold
+            Height: =43
+            Size: =22
+            Text: ="Your Location"
+            Width: =199
+            X: =67
+            Y: =361
+      - txtLocation:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderColor: =ColorValue("#94A3B8")
+            Default: =varCurrentLocationText
+            Height: =64
+            HintText: ="e.g. Near Main Stage, Gate B"
+            HoverBorderColor: =ColorValue("#64748B")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#FFFFFF")
+            PressedBorderColor: =ColorValue("#475569")
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#F8FAFC")
+            Size: =18
+            Width: =480
+            X: =73
+            Y: =480
+      - lblNotes:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Semibold
+            Height: =42
+            Size: =22
+            Text: ="Additional Notes"
+            Width: =240
+            X: =67
+            Y: =562
+      - txtNotes:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderColor: =ColorValue("#94A3B8")
+            Default: =""
+            Height: =269
+            HintText: ="Describe what happened, if safe to do so"
+            HoverBorderColor: =ColorValue("#64748B")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#FFFFFF")
+            Mode: =TextMode.MultiLine
+            PressedBorderColor: =ColorValue("#475569")
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#F8FAFC")
+            Size: =18
+            Width: =480
+            X: =74
+            Y: =614
+      - btnSubmitSOS:
+          Control: ModernButton@1.0.0
+          Properties:
+            BasePaletteColor: =ColorValue("#DC2626")
+            Color: =Color.White
+            FontWeight: =FontWeight.Bold
+            OnSelect: |-
+              =If(
+                  IsBlank(drpIncidentType.Selected.Value) || IsBlank(txtLocation.Text),
+
+                  Notify(
+                      "Please select an incident type and enter your location.",
+                      NotificationType.Error
+                  ),
+
+                  Set(
+                  varNewIncidentID,
+                  "INC-" & Text(Today(), "yyyymmdd") & "-" & Text(CountRows(Incidents) + 1, "000")
+              );
+
+                  Patch(
+                      Incidents,
+                      Defaults(Incidents),
+                      {
+                          Title: varNewIncidentID,
+                          IncidentID: varNewIncidentID,
+                          Types: {Value: drpIncidentType.Selected.Value},
+                          Location: txtLocation.Text,
+                          Priority: {Value: "Critical"},
+                          Notes: txtNotes.Text,
+                          Status: {Value: "New"},
+                          AssignedVolunteer: "",
+                          CreatedTime: Now()
+                      }
+                  );
+
+                  Notify(
+                      "SOS submitted. Help is on the way.",
+                      NotificationType.Success
+                  );
+
+                  Navigate(
+                      SOSConfirmationScreen,
+                      ScreenTransition.Fade
+                  )
+              )
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Size: =34
+            Text: ="SUBMIT SOS"
+            Width: =481
+            X: =74
+            Y: =941
+      - btnUseCurrentLocation_1:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#2563EB")
+            Color: =ColorValue("#2563EB")
+            Fill: =ColorValue("#FFFFFF")
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            HoverBorderColor: =ColorValue("#1D4ED8")
+            HoverColor: =ColorValue("#1D4ED8")
+            HoverFill: =ColorValue("#EFF6FF")
+            OnSelect: |-
+              =Set(
+                  varCurrentLocationText,
+                  "Lat: " & Text(Location.Latitude) & ", Long: " & Text(Location.Longitude)
+              );
+
+              Reset(txtLocation);
+
+              Notify(
+                  "Current location added.",
+                  NotificationType.Success
+              )
+            PressedBorderColor: =ColorValue("#1E40AF")
+            PressedColor: =ColorValue("#1E40AF")
+            PressedFill: =ColorValue("#DBEAFE")
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Text: ="Use Current Location"
+            Width: =480
+            X: =73
+            Y: =413
+      - Image15:
+          Control: Image@2.2.3
+          Properties:
+            Height: =43
+            Image: ='69'
+            Width: =43
+            X: =102
+            Y: =416
+      - btnResidentFirstAidGuide:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: |-
+              =If(
+                  varSelectedTab = "First Aid Guide",
+                  ColorValue("#2563EB"),
+                  ColorValue("#CBD5E1")
+              )
+            BorderThickness: =1
+            Color: |-
+              =If(
+                  varSelectedTab = "First Aid Guide",
+                  ColorValue("#FFFFFF"),
+                  ColorValue("#334155")
+              )
+            Fill: |-
+              =If(
+                  varSelectedTab = "First Aid Guide",
+                  ColorValue("#2563EB"),
+                  ColorValue("#FFFFFF")
+              )
+            Height: =42
+            HoverColor: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#FFFFFF"),
+                  ColorValue("#334155")
+              )
+            HoverFill: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#2563EB"),
+                  ColorValue("#F8FAFC")
+              )
+            OnSelect: |-
+              =Navigate(FirstAidGuideScreen, ScreenTransition.Fade);
+              Set(varSelectedTab, "First Aid Guide")
+            PressedColor: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#1D4ED8"),
+                  ColorValue("#EFF6FF")
+              )
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Size: =16
+            Text: ="First Aid Guide"
+            Width: =181
+            X: =374
+            Y: =184
+      - btnResidentEmergencySOS:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#2563EB"),
+                  ColorValue("#CBD5E1")
+              )
+            BorderThickness: =1
+            Color: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#FFFFFF"),
+                  ColorValue("#334155")
+              )
+            Fill: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#2563EB"),
+                  ColorValue("#FFFFFF")
+              )
+            Height: =42
+            HoverColor: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#FFFFFF"),
+                  ColorValue("#334155")
+              )
+            HoverFill: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#2563EB"),
+                  ColorValue("#F8FAFC")
+              )
+            OnSelect: |-
+              =Navigate(ResidentSOSScreen, ScreenTransition.Fade);
+              Set(varSelectedTab, "Emergency SOS")
+            PressedFill: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#1D4ED8"),
+                  ColorValue("#EFF6FF")
+              )
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Size: =16
+            Text: ="Emergency SOS"
+            Width: =181
+            X: =73
+            Y: =184
+      - Rectangle1:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =ColorValue("#E2E8F0")
+            Height: =1
+            Width: =Parent.Width
+            Y: =167
+      - Rectangle1_1:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =ColorValue("#E2E8F0")
+            Height: =1
+            Width: =Parent.Width
+            Y: =240

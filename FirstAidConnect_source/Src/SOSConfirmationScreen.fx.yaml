@@ -1,0 +1,107 @@
+SOSConfirmationScreen As screen:
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    lblSOSSuccessTitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#166534")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =27
+        Text: ="SOS Submitted Successfully"
+        Width: =560
+        X: =40
+        Y: =364
+        ZIndex: =1
+
+    lblSOSSuccessMessage As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =70
+        Size: =16
+        Text: ="Help is on the way. Your incident has been sent to the command centre."
+        Width: =411
+        X: =115
+        Y: =434
+        ZIndex: =2
+
+    Image7 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =320
+        Image: ='ChatGPT Image May 6, 2026, 08_35_40 PM'
+        Width: =320
+        X: =164
+        Y: =44
+        ZIndex: =3
+
+    lblIncidentIDConfirm As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        Size: =18
+        Text: |-
+            ="Incident ID: " & varNewIncidentID
+        Width: =560
+        X: =40
+        Y: =548
+        ZIndex: =4
+
+    btnConfirmHome As modernButton:
+        Align: =Align.Center
+        BasePaletteColor: |-
+            =ColorValue("#16A34A")
+        FontWeight: =FontWeight.Bold
+        Height: =104
+        OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Size: =34
+        Text: ="Back to Home"
+        Width: =465
+        X: =88
+        Y: =743
+        ZIndex: =5
+
+    btnSubmitAnotherSOS As modernButton:
+        Align: =Align.Center
+        Appearance: =ButtonAppearance.Secondary
+        BasePaletteColor: =Color.White
+        BorderColor: |-
+            =ColorValue("#166534")
+        BorderStyle: =BorderStyle.Solid
+        BorderThickness: =2
+        Color: |-
+            =ColorValue("#166534")
+        Height: =104
+        OnSelect: |-
+            =Reset(txtLocation);
+            Reset(txtNotes);
+            Navigate(ResidentSOSScreen, ScreenTransition.Fade)
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Size: =34
+        Text: ="Submit Another SOS"
+        Width: =465
+        X: =88
+        Y: =885
+        ZIndex: =6
+

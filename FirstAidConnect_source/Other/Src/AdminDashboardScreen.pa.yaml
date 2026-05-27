@@ -1,0 +1,433 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  AdminDashboardScreen:
+    Children:
+      - btnAdminBack:
+          Control: ModernButton@1.0.0
+          Properties:
+            Align: =Align.Justify
+            Appearance: =ButtonAppearance.Secondary
+            BasePaletteColor: =Color.Transparent
+            BorderColor: =Color.Transparent
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =ColorValue("#2563EB")
+            OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Text: ="< Back"
+            Width: =113
+            X: =10
+            Y: =5
+      - lblAdminTitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#0F172A")
+            Fill: =RGBA(0,0,0,0)
+            FontWeight: =FontWeight.Bold
+            Size: =30
+            Text: ="Operations Dashboard"
+            X: =40
+            Y: =47
+      - lblAdminSubtitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#64748B")
+            Height: =52
+            Size: =15
+            Text: ="Real-time overview of incidents and volunteer availability"
+            X: =40
+            Y: =96
+      - Container1:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =ColorValue("#FEF2F2")
+            Height: =117
+            RadiusBottomLeft: =12
+            RadiusBottomRight: =12
+            RadiusTopLeft: =12
+            RadiusTopRight: =12
+            Width: =280
+            X: =35
+            Y: =150
+          Children:
+            - Image1:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =112
+                  Image: ='113'
+                  Width: =99
+                  X: =1
+            - lblActiveIncidentsCount:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#991B1B")
+                  FontWeight: =FontWeight.Bold
+                  Size: =16
+                  Text: ="Active Incidents" & Char(10) & CountRows(Filter(Incidents, Status.Value <> "Resolved"))
+                  Width: =171
+                  X: =100
+                  Y: =21
+      - Container2:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =ColorValue("#F0FDF4")
+            Height: =117
+            RadiusBottomLeft: =12
+            RadiusBottomRight: =12
+            RadiusTopLeft: =12
+            RadiusTopRight: =12
+            Width: =280
+            X: =325
+            Y: =150
+          Children:
+            - Image1_1:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =112
+                  Image: ='14'
+                  Width: =99
+                  X: =1
+            - lblAvailableCount:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#166534")
+                  FontWeight: =FontWeight.Bold
+                  Size: =16
+                  Text: ="Available" & Char(10) & CountRows(Filter(Volunteers, Status.Value = "Available"))
+                  Width: =171
+                  X: =100
+                  Y: =21
+      - Container3:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =ColorValue("#EFF6FF")
+            Height: =117
+            RadiusBottomLeft: =12
+            RadiusBottomRight: =12
+            RadiusTopLeft: =12
+            RadiusTopRight: =12
+            Width: =280
+            X: =35
+            Y: =277
+          Children:
+            - Image1_2:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =112
+                  Image: ='15'
+                  Width: =99
+                  X: =1
+            - lblRespondingCount:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#1E40AF")
+                  FontWeight: =FontWeight.Bold
+                  Size: =16
+                  Text: ="Responding" & Char(10) & CountRows(Filter(Volunteers, Status.Value = "Responding"))
+                  Width: =171
+                  X: =100
+                  Y: =21
+      - Container4:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =ColorValue("#FFFBEB")
+            Height: =117
+            RadiusBottomLeft: =12
+            RadiusBottomRight: =12
+            RadiusTopLeft: =12
+            RadiusTopRight: =12
+            Width: =280
+            X: =325
+            Y: =277
+          Children:
+            - Image1_3:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =112
+                  Image: ='19'
+                  Width: =99
+                  X: =1
+                  Y: =5
+            - lblOnBreakCount:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#92400E")
+                  FontWeight: =FontWeight.Bold
+                  Size: =16
+                  Text: ="On Break" & Char(10) & CountRows(Filter(Volunteers, Status.Value = "On Break"))
+                  Width: =171
+                  X: =100
+                  Y: =21
+      - lblActiveIncidentsTitle:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#0F172A")
+            FontWeight: =FontWeight.Bold
+            Height: =56
+            Size: =18
+            Text: ="Active Incidents"
+            Width: =195
+            X: =44
+            Y: =412
+      - galActiveIncidents:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+          Properties:
+            Height: =382
+            Items: |-
+              =SortByColumns(
+                  Filter(Incidents, Status.Value <> "Resolved"),
+                  "CreatedTime",
+                  SortOrder.Descending
+              )
+            TemplateSize: =112
+            Y: =468
+          Children:
+            - Image2:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =80
+                  Image: ='ChatGPT Image May 7, 2026, 01_15_50 PM'
+                  OnSelect: =Select(Parent)
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                  Width: =83
+                  X: =10
+                  Y: =18
+            - lblGalIncidentType:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =ColorValue("#475569")
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =25
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =0
+                  Size: =14
+                  Text: =ThisItem.Types.Value
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =Parent.TemplateWidth - 173
+                  X: =129
+                  Y: =41
+            - lblGalIncidentID:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =ColorValue("#0F172A")
+                  FontWeight: =FontWeight.Bold
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =0
+                  Size: =18
+                  Text: =ThisItem.IncidentID
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =lblGalIncidentType.Width
+                  X: =99
+                  Y: =10
+            - Separator1:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderStyle: =BorderStyle.Dashed
+                  Fill: =RGBA(255, 255, 255, 1)
+                  Height: =8
+                  OnSelect: =Select(Parent)
+                  Width: =Parent.TemplateWidth
+                  Y: =Parent.TemplateHeight - Self.Height
+            - lblGalLocation:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#64748B")
+                  Height: =32
+                  Size: =14
+                  Text: =ThisItem.Location
+                  Width: =316
+                  X: =124
+                  Y: =73
+            - Image8:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =32
+                  Image: ='ChatGPT Image May 7, 2026, 01_18_33 PM'
+                  Width: =32
+                  X: =95
+                  Y: =40
+            - Image9:
+                Control: Image@2.2.3
+                Properties:
+                  Height: =34
+                  Image: ='ChatGPT Image May 7, 2026, 01_24_32 PM'
+                  Width: =34
+                  X: =94
+                  Y: =73
+            - Priority:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#475569")
+                  Height: =19
+                  Size: =13
+                  Text: ="Priority:"
+                  Width: =84
+                  X: =412
+                  Y: =21
+            - lblGalPriority:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  BorderColor: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FCA5A5"),
+                        "Moderate", ColorValue("#86EFAC"),
+                        "Low", ColorValue("#FCD34D"),
+                        ColorValue("#CBD5E1")
+                    )
+                  Color: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#B91C1C"),
+                        "Moderate", ColorValue("#166534"),
+                        "Low", ColorValue("#92400E"),
+                        ColorValue("#334155")
+                    )
+                  DisabledBorderColor: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FCA5A5"),
+                        "Moderate", ColorValue("#86EFAC"),
+                        "Low", ColorValue("#FCD34D"),
+                        ColorValue("#CBD5E1")
+                    )
+                  Fill: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FEF2F2"),
+                        "Moderate", ColorValue("#DCFCE7"),
+                        "Low", ColorValue("#FEF3C7"),
+                        ColorValue("#F1F5F9")
+                    )
+                  Height: =30
+                  Size: =12
+                  Text: =ThisItem.Priority.Value
+                  Width: =87
+                  X: =488
+                  Y: =16
+            - Status:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#475569")
+                  Height: =25
+                  Size: =13
+                  Text: ="Status:"
+                  Width: =62
+                  X: =412
+                  Y: =59
+            - lblGalStatus:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  BorderColor: |-
+                    =Switch(
+                        ThisItem.Status.Value,
+                        "New", ColorValue("#BFDBFE"),
+                        "Assigned", ColorValue("#86EFAC"),
+                        "Resolved", ColorValue("#FCD34D"),
+                        ColorValue("#CBD5E1")
+                    )
+                  Color: |-
+                    =Switch(
+                        ThisItem.Status.Value,
+                        "New", ColorValue("#1D4ED8"),
+                        "Assigned", ColorValue("#166534"),
+                        "Resolved", ColorValue("#92400E"),
+                        ColorValue("#334155")
+                    )
+                  Fill: |-
+                    =Switch(
+                        ThisItem.Status.Value,
+                        "New", ColorValue("#DBEAFE"),
+                        "Assigned", ColorValue("#DCFCE7"),
+                        "Resolved", ColorValue("#FEF3C7"),
+                        ColorValue("#F1F5F9")
+                    )
+                  Height: =30
+                  Size: =12
+                  Text: =ThisItem.Status.Value
+                  Width: =87
+                  X: =488
+                  Y: =60
+            - Icon1:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  Color: =ColorValue("#E2E8F0")
+                  FocusedBorderThickness: =0.5
+                  Height: =86
+                  Icon: =Icon.VerticalLine
+                  Width: =42
+                  X: =370
+                  Y: =16
+      - btnGoDispatch:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderStyle: =BorderStyle.None
+            Color: =Color.White
+            Fill: =ColorValue("#DC2626")
+            FontWeight: =FontWeight.Bold
+            Height: =61
+            OnSelect: =Navigate(DispatchScreen, ScreenTransition.Fade)
+            Text: ="Dispatch Volunteer"
+            Width: =565
+            X: =38
+            Y: =862
+      - btnGoCreateShift:
+          Control: Classic/Button@2.2.0
+          Properties:
+            Color: =Color.White
+            Fill: =ColorValue("#2563EB")
+            FontWeight: =FontWeight.Bold
+            Height: =61
+            OnSelect: =Navigate(CreateShiftScreen, ScreenTransition.Fade)
+            Text: ="Create Shift"
+            Width: =565
+            X: =38
+            Y: =943
+      - Image10:
+          Control: Image@2.2.3
+          Properties:
+            Height: =95
+            Image: ='ChatGPT Image May 7, 2026, 02_13_53 PM'
+            X: =160
+            Y: =1025
+      - btnRefreshDashboard:
+          Control: Image@2.2.3
+          Properties:
+            Height: =50
+            Image: ='ChatGPT Image May 7, 2026, 02_24_35 PM'
+            OnSelect: |-
+              =Refresh(Incidents);
+              Refresh(Volunteers);
+              Notify("Dashboard refreshed.", NotificationType.Success)
+            Width: =50
+            X: =550
+            Y: =12

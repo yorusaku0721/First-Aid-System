@@ -1,0 +1,456 @@
+ResidentSOSScreen As screen:
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: =Set(varResidentTab, "Emergency SOS")
+
+    btnSOSBack As modernButton:
+        Align: =Align.Justify
+        Appearance: =ButtonAppearance.Secondary
+        BorderStyle: =BorderStyle.None
+        Color: |-
+            =ColorValue("#2563EB")
+        Height: =64
+        OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+        Size: =24
+        Text: ="< Back"
+        Width: =113
+        X: =10
+        Y: =5
+        ZIndex: =1
+
+    lblSOSHeader As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#991B1B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =88
+        Size: =28
+        Text: ="Request Medical Assistance"
+        Width: =505
+        X: =67
+        Y: =40
+        ZIndex: =2
+
+    lblSOSSubtitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#64748B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =70
+        Size: =12
+        Text: ="Submit your location and emergency details so the first aid team can respond quickly."
+        Width: =436
+        X: =102
+        Y: =98
+        ZIndex: =4
+
+    lblIncidentType As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =43
+        Size: =22
+        Text: ="Incident Type"
+        Width: =199
+        X: =67
+        Y: =247
+        ZIndex: =5
+
+    drpIncidentType As dropdown:
+        BorderColor: |-
+            =ColorValue("#94A3B8")
+        ChevronBackground: =RGBA(255, 255, 255, 1)
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: |-
+            =ColorValue("#0F172A")
+        ChevronHoverBackground: |-
+            =ColorValue("#FFFFFF")
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        Font: =App.Theme.Font
+        Height: =53
+        HoverBorderColor: |-
+            =ColorValue("#991B1B")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#FFFFFF")
+        Items: =["SOS Emergency", "Cardiac", "Trauma", "Laceration", "Heat Stress", "Burn", "Other"]
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#FEF2F2")
+        SelectionColor: |-
+            =ColorValue("#991B1B")
+        SelectionFill: |-
+            =ColorValue("#FEF2F2")
+        Size: =18
+        Width: =478
+        X: =74
+        Y: =293
+        ZIndex: =6
+
+    lblLocation As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =43
+        Size: =22
+        Text: ="Your Location"
+        Width: =199
+        X: =67
+        Y: =361
+        ZIndex: =7
+
+    txtLocation As text:
+        BorderColor: |-
+            =ColorValue("#94A3B8")
+        BorderThickness: =2
+        Color: =RGBA(0, 0, 0, 1)
+        Default: =varCurrentLocationText
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =4
+        Font: =App.Theme.Font
+        Height: =64
+        HintText: ="e.g. Near Main Stage, Gate B"
+        HoverBorderColor: |-
+            =ColorValue("#64748B")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#FFFFFF")
+        PressedBorderColor: |-
+            =ColorValue("#475569")
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#F8FAFC")
+        Size: =18
+        Width: =480
+        X: =73
+        Y: =480
+        ZIndex: =9
+
+    lblNotes As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =42
+        Size: =22
+        Text: ="Additional Notes"
+        Width: =240
+        X: =67
+        Y: =562
+        ZIndex: =10
+
+    txtNotes As text:
+        BorderColor: |-
+            =ColorValue("#94A3B8")
+        BorderThickness: =2
+        Color: =RGBA(0, 0, 0, 1)
+        Default: =""
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =4
+        Font: =App.Theme.Font
+        Height: =269
+        HintText: ="Describe what happened, if safe to do so"
+        HoverBorderColor: |-
+            =ColorValue("#64748B")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#FFFFFF")
+        Mode: =TextMode.MultiLine
+        PressedBorderColor: |-
+            =ColorValue("#475569")
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#F8FAFC")
+        Size: =18
+        Width: =480
+        X: =74
+        Y: =614
+        ZIndex: =11
+
+    btnSubmitSOS As modernButton:
+        BasePaletteColor: |-
+            =ColorValue("#DC2626")
+        Color: =Color.White
+        FontWeight: =FontWeight.Bold
+        Height: =64
+        OnSelect: |-
+            =If(
+                IsBlank(drpIncidentType.Selected.Value) || IsBlank(txtLocation.Text),
+            
+                Notify(
+                    "Please select an incident type and enter your location.",
+                    NotificationType.Error
+                ),
+            
+                Set(
+                varNewIncidentID,
+                "INC-" & Text(Today(), "yyyymmdd") & "-" & Text(CountRows(Incidents) + 1, "000")
+            );
+            
+                Patch(
+                    Incidents,
+                    Defaults(Incidents),
+                    {
+                        Title: varNewIncidentID,
+                        IncidentID: varNewIncidentID,
+                        Types: {Value: drpIncidentType.Selected.Value},
+                        Location: txtLocation.Text,
+                        Priority: {Value: "Critical"},
+                        Notes: txtNotes.Text,
+                        Status: {Value: "New"},
+                        AssignedVolunteer: "",
+                        CreatedTime: Now()
+                    }
+                );
+            
+                Notify(
+                    "SOS submitted. Help is on the way.",
+                    NotificationType.Success
+                );
+            
+                Navigate(
+                    SOSConfirmationScreen,
+                    ScreenTransition.Fade
+                )
+            )
+        RadiusBottomLeft: =8
+        RadiusBottomRight: =8
+        RadiusTopLeft: =8
+        RadiusTopRight: =8
+        Size: =34
+        Text: ="SUBMIT SOS"
+        Width: =481
+        X: =74
+        Y: =941
+        ZIndex: =12
+
+    btnUseCurrentLocation_1 As button:
+        BorderColor: |-
+            =ColorValue("#2563EB")
+        Color: |-
+            =ColorValue("#2563EB")
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        HoverBorderColor: |-
+            =ColorValue("#1D4ED8")
+        HoverColor: |-
+            =ColorValue("#1D4ED8")
+        HoverFill: |-
+            =ColorValue("#EFF6FF")
+        OnSelect: |-
+            =Set(
+                varCurrentLocationText,
+                "Lat: " & Text(Location.Latitude) & ", Long: " & Text(Location.Longitude)
+            );
+            
+            Reset(txtLocation);
+            
+            Notify(
+                "Current location added.",
+                NotificationType.Success
+            )
+        PressedBorderColor: |-
+            =ColorValue("#1E40AF")
+        PressedColor: |-
+            =ColorValue("#1E40AF")
+        PressedFill: |-
+            =ColorValue("#DBEAFE")
+        RadiusBottomLeft: =5
+        RadiusBottomRight: =5
+        RadiusTopLeft: =5
+        RadiusTopRight: =5
+        Size: =24
+        Text: ="Use Current Location"
+        Width: =480
+        X: =73
+        Y: =413
+        ZIndex: =13
+
+    Image15 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =43
+        Image: ='69'
+        Width: =43
+        X: =102
+        Y: =416
+        ZIndex: =14
+
+    btnResidentFirstAidGuide As button:
+        BorderColor: |-
+            =If(
+                varSelectedTab = "First Aid Guide",
+                ColorValue("#2563EB"),
+                ColorValue("#CBD5E1")
+            )
+        BorderThickness: =1
+        Color: |-
+            =If(
+                varSelectedTab = "First Aid Guide",
+                ColorValue("#FFFFFF"),
+                ColorValue("#334155")
+            )
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =If(
+                varSelectedTab = "First Aid Guide",
+                ColorValue("#2563EB"),
+                ColorValue("#FFFFFF")
+            )
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =42
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#FFFFFF"),
+                ColorValue("#334155")
+            )
+        HoverFill: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#2563EB"),
+                ColorValue("#F8FAFC")
+            )
+        OnSelect: |-
+            =Navigate(FirstAidGuideScreen, ScreenTransition.Fade);
+            Set(varSelectedTab, "First Aid Guide")
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#1D4ED8"),
+                ColorValue("#EFF6FF")
+            )
+        PressedFill: =App.Theme.Colors.Darker40
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =16
+        Text: ="First Aid Guide"
+        Width: =181
+        X: =374
+        Y: =184
+        ZIndex: =15
+
+    btnResidentEmergencySOS As button:
+        BorderColor: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#2563EB"),
+                ColorValue("#CBD5E1")
+            )
+        BorderThickness: =1
+        Color: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#FFFFFF"),
+                ColorValue("#334155")
+            )
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#2563EB"),
+                ColorValue("#FFFFFF")
+            )
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =42
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#FFFFFF"),
+                ColorValue("#334155")
+            )
+        HoverFill: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#2563EB"),
+                ColorValue("#F8FAFC")
+            )
+        OnSelect: |-
+            =Navigate(ResidentSOSScreen, ScreenTransition.Fade);
+            Set(varSelectedTab, "Emergency SOS")
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: |-
+            =If(
+                varSelectedTab = "Emergency SOS",
+                ColorValue("#1D4ED8"),
+                ColorValue("#EFF6FF")
+            )
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =16
+        Text: ="Emergency SOS"
+        Width: =181
+        X: =73
+        Y: =184
+        ZIndex: =16
+
+    Rectangle1 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: |-
+            =ColorValue("#E2E8F0")
+        Height: =1
+        Width: =Parent.Width
+        Y: =167
+        ZIndex: =17
+
+    Rectangle1_1 As rectangle:
+        BorderColor: =App.Theme.Colors.Darker40
+        Fill: |-
+            =ColorValue("#E2E8F0")
+        Height: =1
+        Width: =Parent.Width
+        Y: =240
+        ZIndex: =18
+

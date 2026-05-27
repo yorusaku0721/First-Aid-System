@@ -1,0 +1,354 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  DispatchScreen:
+    Children:
+      - btnAdminBack_1:
+          Control: ModernButton@1.0.0
+          Properties:
+            Align: =Align.Justify
+            Appearance: =ButtonAppearance.Secondary
+            BasePaletteColor: =Color.Transparent
+            BorderColor: =Color.Transparent
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =ColorValue("#2563EB")
+            OnSelect: =Navigate(AdminDashboardScreen, ScreenTransition.Fade)
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Text: ="< Back"
+            Width: =113
+            X: =10
+            Y: =5
+      - lblDispatchTitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#0F172A")
+            FontWeight: =FontWeight.Bold
+            Size: =34
+            Text: ="Dispatch Volunteer"
+            X: =40
+            Y: =52
+      - lblDispatchSubtitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#64748B")
+            Height: =43
+            Size: =15
+            Text: ="Select a new incident and assign an available volunteer."
+            X: =40
+            Y: =113
+      - lblSelectIncident:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Bold
+            Height: =43
+            Size: =18
+            Text: ="Select Incident"
+            Width: =180
+            X: =28
+            Y: =184
+      - galDispatchIncidents:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+          Properties:
+            Height: =385
+            Items: =Filter(Incidents, Status.Value = "New")
+            OnSelect: =Set(varSelectedIncident, ThisItem)
+            TemplateFill: |-
+              =If(
+                  ThisItem.ID = varSelectedIncident.ID,
+                  ColorValue("#EFF6FF"),
+                  Color.White
+              )
+            Y: =240
+          Children:
+            - Title2:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =ColorValue("#0F172A")
+                  FontWeight: =FontWeight.Bold
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =0
+                  Size: =20
+                  Text: =ThisItem.IncidentID
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =Parent.TemplateWidth - 173
+                  X: =99
+                  Y: =16
+            - Subtitle2:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =ColorValue("#64748B")
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =0
+                  Size: =12
+                  Text: =ThisItem.Types.Value & " | " & ThisItem.Location
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =Title2.Width
+                  X: =Title2.X
+                  Y: =56
+            - Separator2:
+                Control: Rectangle@2.3.0
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  Height: =8
+                  OnSelect: =Select(Parent)
+                  Width: =Parent.TemplateWidth
+                  Y: =Parent.TemplateHeight - Self.Height
+            - Rectangle3:
+                Control: Rectangle@2.3.0
+                Properties:
+                  Fill: =App.Theme.Colors.Darker30
+                  Height: =Parent.TemplateHeight - Separator2.Height
+                  OnSelect: =Select(Parent)
+                  Visible: =ThisItem.IsSelected
+                  Width: =4
+            - lblGalPriority_1:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  BorderColor: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FCA5A5"),
+                        "Moderate", ColorValue("#86EFAC"),
+                        "Low", ColorValue("#FCD34D"),
+                        ColorValue("#CBD5E1")
+                    )
+                  Color: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#B91C1C"),
+                        "Moderate", ColorValue("#166534"),
+                        "Low", ColorValue("#92400E"),
+                        ColorValue("#334155")
+                    )
+                  Fill: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FEF2F2"),
+                        "Moderate", ColorValue("#DCFCE7"),
+                        "Low", ColorValue("#FEF3C7"),
+                        ColorValue("#F1F5F9")
+                    )
+                  Height: =44
+                  HoverBorderColor: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FCA5A5"),
+                        "Moderate", ColorValue("#86EFAC"),
+                        "Low", ColorValue("#FCD34D"),
+                        ColorValue("#CBD5E1")
+                    )
+                  HoverColor: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#B91C1C"),
+                        "Moderate", ColorValue("#166534"),
+                        "Low", ColorValue("#92400E"),
+                        ColorValue("#334155")
+                    )
+                  HoverFill: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FEF2F2"),
+                        "Moderate", ColorValue("#DCFCE7"),
+                        "Low", ColorValue("#FEF3C7"),
+                        ColorValue("#F1F5F9")
+                    )
+                  PressedBorderColor: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FCA5A5"),
+                        "Moderate", ColorValue("#86EFAC"),
+                        "Low", ColorValue("#FCD34D"),
+                        ColorValue("#CBD5E1")
+                    )
+                  PressedColor: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#B91C1C"),
+                        "Moderate", ColorValue("#166534"),
+                        "Low", ColorValue("#92400E"),
+                        ColorValue("#334155")
+                    )
+                  PressedFill: |-
+                    =Switch(
+                        ThisItem.Priority.Value,
+                        "Critical", ColorValue("#FEF2F2"),
+                        "Moderate", ColorValue("#DCFCE7"),
+                        "Low", ColorValue("#FEF3C7"),
+                        ColorValue("#F1F5F9")
+                    )
+                  Size: =16
+                  Text: =ThisItem.Priority.Value
+                  Width: =117
+                  X: =501
+                  Y: =26
+      - lblSelectVolunteer:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Bold
+            Height: =43
+            Size: =18
+            Text: ="Select Volunteer"
+            Width: =208
+            X: =28
+            Y: =625
+      - galAvailableVolunteers:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+          Properties:
+            Height: =298
+            Items: =Filter(Volunteers, Status.Value = "Available")
+            OnSelect: =Set(varSelectedVolunteer, ThisItem)
+            TemplateFill: |-
+              =If(
+                  ThisItem.ID = varSelectedVolunteer.ID,
+                  ColorValue("#EFF6FF"),
+                  Color.White
+              )
+            Y: =668
+          Children:
+            - Title3:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =ColorValue("#0F172A")
+                  FontWeight: =FontWeight.Bold
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =0
+                  Size: =18
+                  Text: =ThisItem.Name
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =Parent.TemplateWidth - 173
+                  X: =103
+                  Y: =16
+            - Subtitle3:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =RGBA(0, 0, 0, 1)
+                  Color: =ColorValue("#64748B")
+                  FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                  Height: =Self.Size * 1.8
+                  OnSelect: =Select(Parent)
+                  PaddingBottom: =0
+                  PaddingLeft: =0
+                  PaddingRight: =0
+                  PaddingTop: =0
+                  Size: =12
+                  Text: =ThisItem.Role.Value & " | " & ThisItem.Sector.Value
+                  VerticalAlign: =VerticalAlign.Top
+                  Width: =Title3.Width
+                  X: =Title3.X
+                  Y: =Title3.Y + Title3.Height
+            - Separator3:
+                Control: Rectangle@2.3.0
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  Height: =8
+                  OnSelect: =Select(Parent)
+                  Width: =Parent.TemplateWidth
+                  Y: =Parent.TemplateHeight - Self.Height
+            - lblGalPriority_2:
+                Control: Classic/Button@2.2.0
+                Properties:
+                  BorderColor: =ColorValue("#86EFAC")
+                  Color: =ColorValue("#166534")
+                  Fill: =ColorValue("#F0FDF4")
+                  Height: =44
+                  Size: =16
+                  Text: ="Available"
+                  Width: =117
+                  X: =501
+                  Y: =26
+            - Rectangle4:
+                Control: Rectangle@2.3.0
+                Properties:
+                  Fill: =App.Theme.Colors.Darker30
+                  Height: =Parent.TemplateHeight - Separator3.Height
+                  OnSelect: =Select(Parent)
+                  Visible: =ThisItem.IsSelected
+                  Width: =4
+      - btnDispatchVolunteer:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderThickness: =0
+            Color: =Color.White
+            DisplayMode: |-
+              =If(
+                  IsBlank(varSelectedIncident) || IsBlank(varSelectedVolunteer),
+                  DisplayMode.Disabled,
+                  DisplayMode.Edit
+              )
+            Fill: =ColorValue("#DC2626")
+            FontWeight: =FontWeight.Bold
+            Height: =61
+            OnSelect: |-
+              =Patch(
+                  Incidents,
+                  varSelectedIncident,
+                  {
+                      AssignedVolunteer: varSelectedVolunteer.Name,
+                      Status: {Value: "Assigned"}
+                  }
+              );
+
+              Patch(
+                  Volunteers,
+                  varSelectedVolunteer,
+                  {
+                      Status: {Value: "Responding"},
+                      CurrentTask: varSelectedIncident.IncidentID
+                  }
+              );
+
+              Notify(
+                  "Volunteer dispatched successfully.",
+                  NotificationType.Success
+              );
+
+              Refresh(Incidents);
+              Refresh(Volunteers);
+
+              Navigate(AdminDashboardScreen, ScreenTransition.Fade)
+            Text: ="DISPATCH VOLUNTEER"
+            Width: =561
+            X: =40
+            Y: =990
+      - lblDispatchHint:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#64748B")
+            Size: =13
+            Text: ="Select one incident and one available volunteer before dispatching."
+            X: =40
+            Y: =1042

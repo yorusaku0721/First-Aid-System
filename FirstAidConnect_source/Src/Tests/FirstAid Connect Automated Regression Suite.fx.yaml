@@ -1,0 +1,135 @@
+"'1c2c4dd1-58d0-4e70-ad29-a4798d65a9d3' As TestSuite":
+    Description: ="This automated regression suite verifies the stable Power Apps workflows in FirstAid Connect, including resident navigation, first aid guide access, form validation, volunteer status update, and create shift validation. Dynamic behaviours such as GPS location, Microsoft Lists backend verification, gallery-based dispatch, and push notifications are documented as manual tests because of Test Studio limitations with modern controls, external data state, and device permissions."
+    DisplayName: ="FirstAid Connect Automated Regression Suite"
+
+    "'976d4f35-8ce1-4789-98c8-ddeff6aee38b' As TestCase":
+        Description: ="Verifies that the Resident / Public role button opens the ResidentSOSScreen."
+        DisplayName: ="TS-01 Resident Role Navigation"
+
+        Step1 As TestStep:
+            Description: ="Select 'btnResident'"
+            Screen: =HomeScreen
+            Value: =Select('btnResident')
+
+        Step2 As TestStep:
+            Description: ="Assert(    lblSOSHeader.Text = ""Request Medical Assistance"",    ""ResidentSOSScreen title should be visible after selecting Resident / Public."")"
+            Value: |-
+                =Assert(
+                    lblSOSHeader.Text = "Request Medical Assistance",
+                    "ResidentSOSScreen title should be visible after selecting Resident / Public."
+                )
+
+    "'4c0413aa-7e0b-42a7-820b-698314e3e94c' As TestCase":
+        Description: ="Verifies that the resident can open the First Aid Guide screen and see emergency guidance content."
+        DisplayName: ="TS-02 First Aid Guide Navigation"
+
+        Step1 As TestStep:
+            Description: ="Select 'btnResident'"
+            Screen: =HomeScreen
+            Value: =Select('btnResident')
+
+        Step2 As TestStep:
+            Description: ="Select 'btnResidentFirstAidGuide'"
+            Screen: =ResidentSOSScreen
+            Value: =Select('btnResidentFirstAidGuide')
+
+        Step3 As TestStep:
+            Description: ="Assert(    lblGuideTitle.Text = ""First Aid Guide"",    ""First Aid Guide title should be visible."")"
+            Value: |-
+                =Assert(
+                    lblGuideTitle.Text = "First Aid Guide",
+                    "First Aid Guide title should be visible."
+                )
+
+        Step4 As TestStep:
+            Description: ="Assert(    lblCPRTitle.Text = ""❤️ CPR"" || lblCPRTitle.Text = ""CPR"",    ""CPR guidance card should be visible."")"
+            Value: |-
+                =Assert(
+                    lblCPRTitle.Text = "❤️ CPR" || lblCPRTitle.Text = "CPR",
+                    "CPR guidance card should be visible."
+                )
+
+    "'8c6acc77-70b1-40e5-a9f7-bdbc7f0e21a7' As TestCase":
+        Description: ="Verifies that the SOS form prevents submission when the location field is blank."
+        DisplayName: ="TS-03 SOS Required Field Validation"
+
+        Step1 As TestStep:
+            Description: ="Select 'btnResident'"
+            Screen: =HomeScreen
+            Value: =Select('btnResident')
+
+        Step2 As TestStep:
+            Description: ="Select 'btnSubmitSOS'"
+            Screen: =ResidentSOSScreen
+            Value: =Select('btnSubmitSOS')
+
+        Step3 As TestStep:
+            Description: ="Assert(    lblResidentTitle.Text = ""Request Medical Assistance"",    ""User should remain on SOS screen when location is blank."")"
+            Value: |-
+                =Assert(
+                    lblSOSHeader.Text = "Request Medical Assistance",
+                    "User should remain on SOS screen when location is blank."
+                )
+
+    "'e4f26e00-6b1d-4564-ba68-90d12ab72579' As TestCase":
+        Description: ="Verifies that the Volunteer Dashboard opens and displays the selected volunteer's name and status."
+        DisplayName: ="TS-04 Volunteer Dashboard Status Display"
+
+        Step1 As TestStep:
+            Description: ="Select 'btnVolunteer'"
+            Screen: =HomeScreen
+            Value: =Select('btnVolunteer')
+
+        Step2 As TestStep:
+            Description: ="Assert(    lblVolunteerTitle.Text = ""Volunteer Dashboard"",    ""Volunteer Dashboard title should be visible."")"
+            Value: |-
+                =Assert(
+                    lblVolunteerTitle.Text = "Volunteer Dashboard",
+                    "Volunteer Dashboard title should be visible."
+                )
+
+        Step3 As TestStep:
+            Description: ="Assert(    !IsBlank(lblVolunteerName.Text),    ""Volunteer name should be displayed."")"
+            Value: |-
+                =Assert(
+                    !IsBlank(lblVolunteerName.Text),
+                    "Volunteer name should be displayed."
+                )
+
+        Step4 As TestStep:
+            Description: ="Assert(    !IsBlank(lblVolunteerStatus.Text),    ""Volunteer status should be displayed."")"
+            Value: |-
+                =Assert(
+                    !IsBlank(lblVolunteerStatus.Text),
+                    "Volunteer status should be displayed."
+                )
+
+    "'8ce98832-8cd5-43ff-aac8-d1bd2a29bd05' As TestCase":
+        Description: ="Verifies that CreateShiftScreen prevents incomplete shift creation when required time fields are empty."
+        DisplayName: ="TS-05 Create Shift Required Field Validation"
+
+        Step1 As TestStep:
+            Description: ="Select 'btnAdmin'"
+            Screen: =HomeScreen
+            Value: =Select('btnAdmin')
+
+        Step2 As TestStep:
+            Description: ="Select 'btnGoCreateShift'"
+            Screen: =AdminDashboardScreen
+            Value: =Select('btnGoCreateShift')
+
+        Step3 As TestStep:
+            Description: ="Select 'txtStartTime'"
+            Screen: =CreateShiftScreen
+            Value: =Select('txtStartTime')
+
+        Step4 As TestStep:
+            Description: ="Select 'txtEndTime'"
+            Screen: =CreateShiftScreen
+            Value: =Select('txtEndTime')
+
+        Step5 As TestStep:
+            Description: ="Select 'btnCreateShift'"
+            Screen: =CreateShiftScreen
+            Value: =Select('btnCreateShift')
+

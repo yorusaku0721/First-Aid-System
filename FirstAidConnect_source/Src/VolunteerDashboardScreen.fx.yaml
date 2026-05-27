@@ -1,0 +1,530 @@
+VolunteerDashboardScreen As screen:
+    Fill: |-
+        =ColorValue("#F8FAFC")
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnVisible: =Set(varCurrentVolunteer, First(Volunteers))
+
+    btnAdminBack_2 As modernButton:
+        Align: =Align.Justify
+        Appearance: =ButtonAppearance.Secondary
+        BasePaletteColor: =Color.Transparent
+        BorderColor: =Color.Transparent
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        Color: |-
+            =ColorValue("#2563EB")
+        Font: =""
+        Height: =64
+        OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Size: =24
+        Text: ="< Back"
+        Width: =113
+        X: =10
+        Y: =5
+        ZIndex: =1
+
+    lblVolunteerTitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =30
+        Text: ="Volunteer Dashboard"
+        Width: =560
+        X: =40
+        Y: =16
+        ZIndex: =2
+
+    lblVolunteerSubtitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#64748B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =70
+        Size: =16
+        Text: ="View your shifts and update your availability status."
+        Width: =560
+        X: =40
+        Y: =58
+        ZIndex: =3
+
+    "'lblSelectVolunteer.' As label":
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#334155")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =45
+        Size: =19
+        Text: ="Select Volunteer"
+        Width: =200
+        X: =30
+        Y: =171
+        ZIndex: =4
+
+    drpVolunteer As dropdown:
+        BorderColor: |-
+            =ColorValue("#CBD5E1")
+        ChevronBackground: |-
+            =ColorValue("#FFFFFF")
+        ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+        ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+        ChevronFill: |-
+            =ColorValue("#2563EB")
+        ChevronHoverBackground: =App.Theme.Colors.Darker10
+        ChevronHoverFill: =App.Theme.Colors.PrimaryForeground
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#FFFFFF")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: |-
+            =ColorValue("#94A3B8")
+        HoverColor: |-
+            =ColorValue("#0F172A")
+        HoverFill: |-
+            =ColorValue("#F8FAFC")
+        Items: =Volunteers
+        OnChange: =Set(varCurrentVolunteer, drpVolunteer.Selected)
+        PressedBorderColor: |-
+            =ColorValue("#2563EB")
+        PressedColor: |-
+            =ColorValue("#0F172A")
+        PressedFill: |-
+            =ColorValue("#EFF6FF")
+        SelectionColor: |-
+            =ColorValue("#1D4ED8")
+        SelectionFill: |-
+            =ColorValue("#DBEAFE")
+        Size: =19
+        Width: =575
+        X: =33
+        Y: =230
+        ZIndex: =5
+
+    btnVolunteerInfoCard As button:
+        BorderColor: |-
+            =ColorValue("#E2E8F0")
+        Color: =App.Theme.Colors.PrimaryForeground
+        DisabledBorderColor: |-
+            =ColorValue("#E2E8F0")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =Color.White
+        DisplayMode: =DisplayMode.Disabled
+        Fill: =Color.White
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Semibold
+        Height: =165
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =24
+        Text: =""
+        Width: =575
+        X: =33
+        Y: =324
+        ZIndex: =6
+
+    lblVolunteerName As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =28
+        Text: |-
+            =If(
+                IsBlank(varCurrentVolunteer),
+                "No volunteer selected",
+                varCurrentVolunteer.Name
+            )
+        Width: =420
+        X: =44
+        Y: =324
+        ZIndex: =7
+
+    lblVolunteerStatus As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#475569")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =70
+        Size: =19
+        Text: |-
+            ="Current Status: " & varCurrentVolunteer.Status.Value
+        Width: =531
+        X: =44
+        Y: =376
+        ZIndex: =8
+
+    lblCurrentTask As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#64748B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =70
+        Size: =19
+        Text: |-
+            =If(
+                IsBlank(varCurrentVolunteer.CurrentTask),
+                "Current Task: No current task",
+                "Current Task: " &  varCurrentVolunteer.CurrentTask
+            )
+        Width: =560
+        X: =44
+        Y: =419
+        ZIndex: =9
+
+    btnSetAvailable As button:
+        BorderColor: |-
+            =ColorValue("#16A34A")
+        BorderThickness: =1
+        Color: =Color.White
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: |-
+            =If(
+                !IsBlank(varCurrentVolunteer.CurrentTask),
+                DisplayMode.Disabled,
+                DisplayMode.Edit
+            )
+        Fill: |-
+            =ColorValue("#16A34A")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =58
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: |-
+            =ColorValue("#FFFFFF")
+        HoverFill: |-
+            =ColorValue("#15803D")
+        OnSelect: |-
+            =If(
+                !IsBlank(varCurrentVolunteer.CurrentTask),
+            
+                Notify(
+                    "You still have an assigned incident. Please resolve the incident before changing to Available.",
+                    NotificationType.Error
+                ),
+            
+                Patch(
+                    Volunteers,
+                    varCurrentVolunteer,
+                    {
+                        Status: {Value: "Available"},
+                        CurrentTask: ""
+                    }
+                );
+            
+                Refresh(Volunteers);
+            
+                Set(
+                    varCurrentVolunteer,
+                    LookUp(
+                        Volunteers,
+                        Name = varCurrentVolunteer.Name
+                    )
+                );
+            
+                Notify(
+                    "Status updated to Available.",
+                    NotificationType.Success
+                )
+            )
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: |-
+            =ColorValue("#FFFFFF")
+        PressedFill: |-
+            =ColorValue("#166534")
+        Size: =22
+        Text: ="Available"
+        Width: =183
+        X: =33
+        Y: =516
+        ZIndex: =10
+
+    btnSetResponding As button:
+        BorderColor: |-
+            =ColorValue("#2563EB")
+        BorderThickness: =1
+        Color: =Color.White
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#2563EB")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =58
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: |-
+            =ColorValue("#FFFFFF")
+        HoverFill: |-
+            =ColorValue("#1D4ED8")
+        OnSelect: |-
+            =Patch(
+                Volunteers,
+                varCurrentVolunteer,
+                {
+                    Status: {Value: "Responding"}
+                }
+            );
+            
+            Set(
+                varCurrentVolunteer,
+                LookUp(Volunteers, ID = varCurrentVolunteer.ID)
+            );
+            
+            Notify(
+                "Status updated to Responding.",
+                NotificationType.Success
+            )
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: |-
+            =ColorValue("#FFFFFF")
+        PressedFill: |-
+            =ColorValue("#1E40AF")
+        Size: =22
+        Text: ="Responding"
+        Width: =183
+        X: =230
+        Y: =516
+        ZIndex: =11
+
+    btnSetOnBreak As button:
+        BorderColor: |-
+            =ColorValue("#F59E0B")
+        BorderThickness: =1
+        Color: =Color.White
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: |-
+            =If(
+                !IsBlank(varCurrentVolunteer.CurrentTask),
+                DisplayMode.Disabled,
+                DisplayMode.Edit
+            )
+        Fill: |-
+            =ColorValue("#F59E0B")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =58
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: |-
+            =ColorValue("#FFFFFF")
+        HoverFill: |-
+            =ColorValue("#D97706")
+        OnSelect: |-
+            =If(
+                !IsBlank(varCurrentVolunteer.CurrentTask),
+            
+                Notify(
+                    "You still have an assigned incident. Please resolve the incident before going On Break.",
+                    NotificationType.Error
+                ),
+            
+                Patch(
+                    Volunteers,
+                    varCurrentVolunteer,
+                    {
+                        Status: {Value: "On Break"}
+                    }
+                );
+            
+                Refresh(Volunteers);
+            
+                Set(
+                    varCurrentVolunteer,
+                    LookUp(
+                        Volunteers,
+                        Name = varCurrentVolunteer.Name
+                    )
+                );
+            
+                Notify(
+                    "Status updated to On Break.",
+                    NotificationType.Success
+                )
+            )
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: |-
+            =ColorValue("#FFFFFF")
+        PressedFill: |-
+            =ColorValue("#B45309")
+        Size: =22
+        Text: ="On Break"
+        Width: =183
+        X: =425
+        Y: =516
+        ZIndex: =12
+
+    btnViewCurrentIncident As button:
+        BorderColor: |-
+            =ColorValue("#DC2626")
+        BorderThickness: =1
+        Color: =Color.White
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#DC2626")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =58
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: |-
+            =ColorValue("#FFFFFF")
+        HoverFill: |-
+            =ColorValue("#B91C1C")
+        OnSelect: |-
+            =Set(
+                varCurrentIncident,
+                LookUp(
+                    Incidents,
+                    IncidentID = varCurrentVolunteer.CurrentTask
+                )
+            );
+            
+            Navigate(
+                VolunteerIncidentDetailScreen,
+                ScreenTransition.Fade
+            )
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: |-
+            =ColorValue("#FFFFFF")
+        PressedFill: |-
+            =ColorValue("#991B1B")
+        Size: =24
+        Text: ="View Current Incident"
+        Visible: =!IsBlank(varCurrentVolunteer.CurrentTask)
+        Width: =575
+        X: =33
+        Y: =599
+        ZIndex: =13
+
+    lblMyShiftsTitle As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: ="My Shifts"
+        Width: =163
+        X: =26
+        Y: =682
+        ZIndex: =14
+
+    "galMyShifts As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        BorderColor: |-
+            =ColorValue("#E2E8F0")
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Fill: =Color.Transparent
+        Height: =365
+        Items: |-
+            =Filter(
+                Shifts,
+                VolunteerName = varCurrentVolunteer.Name
+            )
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateFill: =Color.White
+        TemplatePadding: =0
+        TemplateSize: =86
+        Width: =578
+        X: =31
+        Y: =745
+        ZIndex: =16
+
+        Separator7 As rectangle:
+            BorderColor: =App.Theme.Colors.Darker40
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =2
+
+        lblShiftMain As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#0F172A")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =43
+            OnSelect: =Select(Parent)
+            Size: =16
+            Text: =ThisItem.Sector.Value & " — " & ThisItem.Role.Value
+            Width: =424
+            X: =25
+            Y: =9
+            ZIndex: =3
+
+        lblShiftTime As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#64748B")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            Height: =34
+            Size: =16
+            Text: =Text(ThisItem.ShiftDate, "dd/mm/yyyy") & " | " & ThisItem.StartTime & " - " & ThisItem.EndTime
+            Width: =372
+            X: =24
+            Y: =43
+            ZIndex: =4
+
+    Label1 As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#7C2D12")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =49
+        Size: =16
+        Text: ="Offline Mode — Showing Last Synced Data"
+        Width: =463
+        X: =113
+        Y: =119
+        ZIndex: =17
+
+    Image11 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =35
+        Image: ='99'
+        Width: =35
+        X: =73
+        Y: =126
+        ZIndex: =18
+

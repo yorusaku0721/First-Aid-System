@@ -1,0 +1,89 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  SOSConfirmationScreen:
+    Children:
+      - lblSOSSuccessTitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#166534")
+            FontWeight: =FontWeight.Bold
+            Size: =27
+            Text: ="SOS Submitted Successfully"
+            X: =40
+            Y: =364
+      - lblSOSSuccessMessage:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#334155")
+            Size: =16
+            Text: ="Help is on the way. Your incident has been sent to the command centre."
+            Width: =411
+            X: =115
+            Y: =434
+      - Image7:
+          Control: Image@2.2.3
+          Properties:
+            Image: ='ChatGPT Image May 6, 2026, 08_35_40 PM'
+            X: =164
+            Y: =44
+      - lblIncidentIDConfirm:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#0F172A")
+            FontWeight: =FontWeight.Semibold
+            Size: =18
+            Text: |-
+              ="Incident ID: " & varNewIncidentID
+            X: =40
+            Y: =548
+      - btnConfirmHome:
+          Control: ModernButton@1.0.0
+          Properties:
+            Align: =Align.Center
+            BasePaletteColor: =ColorValue("#16A34A")
+            FontWeight: =FontWeight.Bold
+            Height: =104
+            OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Size: =34
+            Text: ="Back to Home"
+            Width: =465
+            X: =88
+            Y: =743
+      - btnSubmitAnotherSOS:
+          Control: ModernButton@1.0.0
+          Properties:
+            Align: =Align.Center
+            Appearance: =ButtonAppearance.Secondary
+            BasePaletteColor: =Color.White
+            BorderColor: =ColorValue("#166534")
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =2
+            Color: =ColorValue("#166534")
+            Height: =104
+            OnSelect: |-
+              =Reset(txtLocation);
+              Reset(txtNotes);
+              Navigate(ResidentSOSScreen, ScreenTransition.Fade)
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Size: =34
+            Text: ="Submit Another SOS"
+            Width: =465
+            X: =88
+            Y: =885

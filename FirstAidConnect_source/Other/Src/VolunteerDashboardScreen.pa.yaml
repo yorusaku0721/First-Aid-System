@@ -1,0 +1,393 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  VolunteerDashboardScreen:
+    Properties:
+      Fill: =ColorValue("#F8FAFC")
+      OnVisible: =Set(varCurrentVolunteer, First(Volunteers))
+    Children:
+      - btnAdminBack_2:
+          Control: ModernButton@1.0.0
+          Properties:
+            Align: =Align.Justify
+            Appearance: =ButtonAppearance.Secondary
+            BasePaletteColor: =Color.Transparent
+            BorderColor: =Color.Transparent
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =ColorValue("#2563EB")
+            OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Text: ="< Back"
+            Width: =113
+            X: =10
+            Y: =5
+      - lblVolunteerTitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#0F172A")
+            FontWeight: =FontWeight.Bold
+            Size: =30
+            Text: ="Volunteer Dashboard"
+            X: =40
+            Y: =16
+      - lblVolunteerSubtitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#64748B")
+            Size: =16
+            Text: ="View your shifts and update your availability status."
+            X: =40
+            Y: =58
+      - lblSelectVolunteer.:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Semibold
+            Height: =45
+            Size: =19
+            Text: ="Select Volunteer"
+            Width: =200
+            X: =30
+            Y: =171
+      - drpVolunteer:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            BorderColor: =ColorValue("#CBD5E1")
+            ChevronBackground: =ColorValue("#FFFFFF")
+            ChevronFill: =ColorValue("#2563EB")
+            Color: =ColorValue("#0F172A")
+            Fill: =ColorValue("#FFFFFF")
+            FontWeight: =FontWeight.Semibold
+            HoverBorderColor: =ColorValue("#94A3B8")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#F8FAFC")
+            Items: =Volunteers
+            Items.Value: =Name
+            OnChange: =Set(varCurrentVolunteer, drpVolunteer.Selected)
+            PressedBorderColor: =ColorValue("#2563EB")
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#EFF6FF")
+            SelectionColor: =ColorValue("#1D4ED8")
+            SelectionFill: =ColorValue("#DBEAFE")
+            Size: =19
+            X: =33
+            Y: =230
+      - btnVolunteerInfoCard:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#E2E8F0")
+            DisabledBorderColor: =ColorValue("#E2E8F0")
+            DisabledFill: =Color.White
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =Color.White
+            Height: =165
+            Text: =""
+            Width: =575
+            X: =33
+            Y: =324
+      - lblVolunteerName:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#0F172A")
+            FontWeight: =FontWeight.Bold
+            Size: =28
+            Text: |-
+              =If(
+                  IsBlank(varCurrentVolunteer),
+                  "No volunteer selected",
+                  varCurrentVolunteer.Name
+              )
+            Width: =420
+            X: =44
+            Y: =324
+      - lblVolunteerStatus:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#475569")
+            Size: =19
+            Text: |-
+              ="Current Status: " & varCurrentVolunteer.Status.Value
+            Width: =531
+            X: =44
+            Y: =376
+      - lblCurrentTask:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#64748B")
+            Size: =19
+            Text: |-
+              =If(
+                  IsBlank(varCurrentVolunteer.CurrentTask),
+                  "Current Task: No current task",
+                  "Current Task: " &  varCurrentVolunteer.CurrentTask
+              )
+            X: =44
+            Y: =419
+      - btnSetAvailable:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#16A34A")
+            BorderThickness: =1
+            Color: =Color.White
+            DisplayMode: |-
+              =If(
+                  !IsBlank(varCurrentVolunteer.CurrentTask),
+                  DisplayMode.Disabled,
+                  DisplayMode.Edit
+              )
+            Fill: =ColorValue("#16A34A")
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            HoverColor: =ColorValue("#FFFFFF")
+            HoverFill: =ColorValue("#15803D")
+            OnSelect: |-
+              =If(
+                  !IsBlank(varCurrentVolunteer.CurrentTask),
+
+                  Notify(
+                      "You still have an assigned incident. Please resolve the incident before changing to Available.",
+                      NotificationType.Error
+                  ),
+
+                  Patch(
+                      Volunteers,
+                      varCurrentVolunteer,
+                      {
+                          Status: {Value: "Available"},
+                          CurrentTask: ""
+                      }
+                  );
+
+                  Refresh(Volunteers);
+
+                  Set(
+                      varCurrentVolunteer,
+                      LookUp(
+                          Volunteers,
+                          Name = varCurrentVolunteer.Name
+                      )
+                  );
+
+                  Notify(
+                      "Status updated to Available.",
+                      NotificationType.Success
+                  )
+              )
+            PressedColor: =ColorValue("#FFFFFF")
+            PressedFill: =ColorValue("#166534")
+            Size: =22
+            Text: ="Available"
+            Width: =183
+            X: =33
+            Y: =516
+      - btnSetResponding:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#2563EB")
+            BorderThickness: =1
+            Color: =Color.White
+            Fill: =ColorValue("#2563EB")
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            HoverColor: =ColorValue("#FFFFFF")
+            HoverFill: =ColorValue("#1D4ED8")
+            OnSelect: |-
+              =Patch(
+                  Volunteers,
+                  varCurrentVolunteer,
+                  {
+                      Status: {Value: "Responding"}
+                  }
+              );
+
+              Set(
+                  varCurrentVolunteer,
+                  LookUp(Volunteers, ID = varCurrentVolunteer.ID)
+              );
+
+              Notify(
+                  "Status updated to Responding.",
+                  NotificationType.Success
+              )
+            PressedColor: =ColorValue("#FFFFFF")
+            PressedFill: =ColorValue("#1E40AF")
+            Size: =22
+            Text: ="Responding"
+            Width: =183
+            X: =230
+            Y: =516
+      - btnSetOnBreak:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#F59E0B")
+            BorderThickness: =1
+            Color: =Color.White
+            DisplayMode: |-
+              =If(
+                  !IsBlank(varCurrentVolunteer.CurrentTask),
+                  DisplayMode.Disabled,
+                  DisplayMode.Edit
+              )
+            Fill: =ColorValue("#F59E0B")
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            HoverColor: =ColorValue("#FFFFFF")
+            HoverFill: =ColorValue("#D97706")
+            OnSelect: |-
+              =If(
+                  !IsBlank(varCurrentVolunteer.CurrentTask),
+
+                  Notify(
+                      "You still have an assigned incident. Please resolve the incident before going On Break.",
+                      NotificationType.Error
+                  ),
+
+                  Patch(
+                      Volunteers,
+                      varCurrentVolunteer,
+                      {
+                          Status: {Value: "On Break"}
+                      }
+                  );
+
+                  Refresh(Volunteers);
+
+                  Set(
+                      varCurrentVolunteer,
+                      LookUp(
+                          Volunteers,
+                          Name = varCurrentVolunteer.Name
+                      )
+                  );
+
+                  Notify(
+                      "Status updated to On Break.",
+                      NotificationType.Success
+                  )
+              )
+            PressedColor: =ColorValue("#FFFFFF")
+            PressedFill: =ColorValue("#B45309")
+            Size: =22
+            Text: ="On Break"
+            Width: =183
+            X: =425
+            Y: =516
+      - btnViewCurrentIncident:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#DC2626")
+            BorderThickness: =1
+            Color: =Color.White
+            Fill: =ColorValue("#DC2626")
+            FontWeight: =FontWeight.Bold
+            Height: =58
+            HoverColor: =ColorValue("#FFFFFF")
+            HoverFill: =ColorValue("#B91C1C")
+            OnSelect: |-
+              =Set(
+                  varCurrentIncident,
+                  LookUp(
+                      Incidents,
+                      IncidentID = varCurrentVolunteer.CurrentTask
+                  )
+              );
+
+              Navigate(
+                  VolunteerIncidentDetailScreen,
+                  ScreenTransition.Fade
+              )
+            PressedColor: =ColorValue("#FFFFFF")
+            PressedFill: =ColorValue("#991B1B")
+            Text: ="View Current Incident"
+            Visible: =!IsBlank(varCurrentVolunteer.CurrentTask)
+            Width: =575
+            X: =33
+            Y: =599
+      - lblMyShiftsTitle:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#0F172A")
+            FontWeight: =FontWeight.Bold
+            Text: ="My Shifts"
+            Width: =163
+            X: =26
+            Y: =682
+      - galMyShifts:
+          Control: Gallery@2.15.0
+          Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+          Properties:
+            BorderColor: =ColorValue("#E2E8F0")
+            BorderThickness: =1
+            Fill: =Color.Transparent
+            Height: =365
+            Items: |-
+              =Filter(
+                  Shifts,
+                  VolunteerName = varCurrentVolunteer.Name
+              )
+            TemplateFill: =Color.White
+            TemplateSize: =86
+            Width: =578
+            X: =31
+            Y: =745
+          Children:
+            - Separator7:
+                Control: Rectangle@2.3.0
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  Height: =8
+                  OnSelect: =Select(Parent)
+                  Width: =Parent.TemplateWidth
+                  Y: =Parent.TemplateHeight - Self.Height
+            - lblShiftMain:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#0F172A")
+                  FontWeight: =FontWeight.Bold
+                  Height: =43
+                  OnSelect: =Select(Parent)
+                  Size: =16
+                  Text: =ThisItem.Sector.Value & " — " & ThisItem.Role.Value
+                  Width: =424
+                  X: =25
+                  Y: =9
+            - lblShiftTime:
+                Control: Label@2.5.1
+                Properties:
+                  Color: =ColorValue("#64748B")
+                  Height: =34
+                  Size: =16
+                  Text: =Text(ThisItem.ShiftDate, "dd/mm/yyyy") & " | " & ThisItem.StartTime & " - " & ThisItem.EndTime
+                  Width: =372
+                  X: =24
+                  Y: =43
+      - Label1:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#7C2D12")
+            Height: =49
+            Size: =16
+            Text: ="Offline Mode — Showing Last Synced Data"
+            Width: =463
+            X: =113
+            Y: =119
+      - Image11:
+          Control: Image@2.2.3
+          Properties:
+            Height: =35
+            Image: ='99'
+            Width: =35
+            X: =73
+            Y: =126

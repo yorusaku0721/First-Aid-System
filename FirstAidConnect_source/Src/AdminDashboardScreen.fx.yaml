@@ -1,0 +1,586 @@
+AdminDashboardScreen As screen:
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    btnAdminBack As modernButton:
+        Align: =Align.Justify
+        Appearance: =ButtonAppearance.Secondary
+        BasePaletteColor: =Color.Transparent
+        BorderColor: =Color.Transparent
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        Color: |-
+            =ColorValue("#2563EB")
+        Font: =""
+        Height: =64
+        OnSelect: =Navigate(HomeScreen, ScreenTransition.Fade)
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Size: =24
+        Text: ="< Back"
+        Width: =113
+        X: =10
+        Y: =5
+        ZIndex: =2
+
+    lblAdminTitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(0,0,0,0)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =30
+        Text: ="Operations Dashboard"
+        Width: =560
+        X: =40
+        Y: =47
+        ZIndex: =3
+
+    lblAdminSubtitle As label:
+        Align: =Align.Center
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#64748B")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        Height: =52
+        Size: =15
+        Text: ="Real-time overview of incidents and volunteer availability"
+        Width: =560
+        X: =40
+        Y: =96
+        ZIndex: =4
+
+    Container1 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: |-
+            =ColorValue("#FEF2F2")
+        Height: =117
+        LayoutGridColumnMinWidth: =0
+        LayoutGridColumns: =6
+        LayoutGridRowMinHeight: =0
+        LayoutGridRows: =6
+        RadiusBottomLeft: =12
+        RadiusBottomRight: =12
+        RadiusTopLeft: =12
+        RadiusTopRight: =12
+        Width: =280
+        X: =35
+        Y: =150
+        ZIndex: =6
+
+        Image1 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =112
+            Image: ='113'
+            Width: =99
+            X: =1
+            ZIndex: =1
+
+        lblActiveIncidentsCount As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#991B1B")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =70
+            Size: =16
+            Text: ="Active Incidents" & Char(10) & CountRows(Filter(Incidents, Status.Value <> "Resolved"))
+            Width: =171
+            X: =100
+            Y: =21
+            ZIndex: =2
+
+    Container2 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: |-
+            =ColorValue("#F0FDF4")
+        Height: =117
+        LayoutGridColumnMinWidth: =0
+        LayoutGridColumns: =6
+        LayoutGridRowMinHeight: =0
+        LayoutGridRows: =6
+        maximumHeight: =11360
+        maximumWidth: =640
+        RadiusBottomLeft: =12
+        RadiusBottomRight: =12
+        RadiusTopLeft: =12
+        RadiusTopRight: =12
+        Width: =280
+        X: =325
+        Y: =150
+        ZIndex: =7
+
+        Image1_1 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =112
+            Image: ='14'
+            Width: =99
+            X: =1
+            ZIndex: =1
+
+        lblAvailableCount As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#166534")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =70
+            Size: =16
+            Text: ="Available" & Char(10) & CountRows(Filter(Volunteers, Status.Value = "Available"))
+            Width: =171
+            X: =100
+            Y: =21
+            ZIndex: =2
+
+    Container3 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: |-
+            =ColorValue("#EFF6FF")
+        Height: =117
+        LayoutGridColumnMinWidth: =0
+        LayoutGridColumns: =6
+        LayoutGridRowMinHeight: =0
+        LayoutGridRows: =6
+        maximumHeight: =11360
+        maximumWidth: =640
+        RadiusBottomLeft: =12
+        RadiusBottomRight: =12
+        RadiusTopLeft: =12
+        RadiusTopRight: =12
+        Width: =280
+        X: =35
+        Y: =277
+        ZIndex: =8
+
+        Image1_2 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =112
+            Image: ='15'
+            Width: =99
+            X: =1
+            ZIndex: =1
+
+        lblRespondingCount As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#1E40AF")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =70
+            Size: =16
+            Text: ="Responding" & Char(10) & CountRows(Filter(Volunteers, Status.Value = "Responding"))
+            Width: =171
+            X: =100
+            Y: =21
+            ZIndex: =2
+
+    Container4 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: |-
+            =ColorValue("#FFFBEB")
+        Height: =117
+        LayoutGridColumnMinWidth: =0
+        LayoutGridColumns: =6
+        LayoutGridRowMinHeight: =0
+        LayoutGridRows: =6
+        maximumHeight: =11360
+        maximumWidth: =640
+        RadiusBottomLeft: =12
+        RadiusBottomRight: =12
+        RadiusTopLeft: =12
+        RadiusTopRight: =12
+        Width: =280
+        X: =325
+        Y: =277
+        ZIndex: =9
+
+        Image1_3 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =112
+            Image: ='19'
+            Width: =99
+            X: =1
+            Y: =5
+            ZIndex: =1
+
+        lblOnBreakCount As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#92400E")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =70
+            Size: =16
+            Text: ="On Break" & Char(10) & CountRows(Filter(Volunteers, Status.Value = "On Break"))
+            Width: =171
+            X: =100
+            Y: =21
+            ZIndex: =2
+
+    lblActiveIncidentsTitle As label:
+        BorderColor: =App.Theme.Colors.Darker40
+        Color: |-
+            =ColorValue("#0F172A")
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =56
+        Size: =18
+        Text: ="Active Incidents"
+        Width: =195
+        X: =44
+        Y: =412
+        ZIndex: =10
+
+    "galActiveIncidents As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        BorderColor: =App.Theme.Colors.Darker40
+        DelayItemLoading: =true
+        Height: =382
+        Items: |-
+            =SortByColumns(
+                Filter(Incidents, Status.Value <> "Resolved"),
+                "CreatedTime",
+                SortOrder.Descending
+            )
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =112
+        Y: =468
+        ZIndex: =11
+
+        Image2 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =80
+            Image: ='ChatGPT Image May 7, 2026, 01_15_50 PM'
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =83
+            X: =10
+            Y: =18
+            ZIndex: =2
+
+        lblGalIncidentType As label:
+            Color: |-
+                =ColorValue("#475569")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =25
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Types.Value
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 173
+            X: =129
+            Y: =41
+            ZIndex: =3
+
+        lblGalIncidentID As label:
+            Color: |-
+                =ColorValue("#0F172A")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =18
+            Text: =ThisItem.IncidentID
+            VerticalAlign: =VerticalAlign.Top
+            Width: =lblGalIncidentType.Width
+            X: =99
+            Y: =10
+            ZIndex: =4
+
+        Separator1 As rectangle:
+            BorderColor: =App.Theme.Colors.Darker40
+            BorderStyle: =BorderStyle.Dashed
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =5
+
+        lblGalLocation As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#64748B")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            Height: =32
+            Text: =ThisItem.Location
+            Width: =316
+            X: =124
+            Y: =73
+            ZIndex: =6
+
+        Image8 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =32
+            Image: ='ChatGPT Image May 7, 2026, 01_18_33 PM'
+            Width: =32
+            X: =95
+            Y: =40
+            ZIndex: =7
+
+        Image9 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =34
+            Image: ='ChatGPT Image May 7, 2026, 01_24_32 PM'
+            Width: =34
+            X: =94
+            Y: =73
+            ZIndex: =8
+
+        Priority As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#475569")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            Height: =19
+            Size: =13
+            Text: |-
+                ="Priority:"
+            Width: =84
+            X: =412
+            Y: =21
+            ZIndex: =9
+
+        lblGalPriority As button:
+            BorderColor: |-
+                =Switch(
+                    ThisItem.Priority.Value,
+                    "Critical", ColorValue("#FCA5A5"),
+                    "Moderate", ColorValue("#86EFAC"),
+                    "Low", ColorValue("#FCD34D"),
+                    ColorValue("#CBD5E1")
+                )
+            Color: |-
+                =Switch(
+                    ThisItem.Priority.Value,
+                    "Critical", ColorValue("#B91C1C"),
+                    "Moderate", ColorValue("#166534"),
+                    "Low", ColorValue("#92400E"),
+                    ColorValue("#334155")
+                )
+            DisabledBorderColor: |-
+                =Switch(
+                    ThisItem.Priority.Value,
+                    "Critical", ColorValue("#FCA5A5"),
+                    "Moderate", ColorValue("#86EFAC"),
+                    "Low", ColorValue("#FCD34D"),
+                    ColorValue("#CBD5E1")
+                )
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =Switch(
+                    ThisItem.Priority.Value,
+                    "Critical", ColorValue("#FEF2F2"),
+                    "Moderate", ColorValue("#DCFCE7"),
+                    "Low", ColorValue("#FEF3C7"),
+                    ColorValue("#F1F5F9")
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =30
+            HoverBorderColor: =App.Theme.Colors.Darker10
+            HoverColor: =App.Theme.Colors.PrimaryForeground
+            HoverFill: =App.Theme.Colors.Darker10
+            PressedBorderColor: =App.Theme.Colors.Darker40
+            PressedColor: =Self.Color
+            PressedFill: =App.Theme.Colors.Darker40
+            Size: =12
+            Text: =ThisItem.Priority.Value
+            Width: =87
+            X: =488
+            Y: =16
+            ZIndex: =10
+
+        Status As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#475569")
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            Height: =25
+            Size: =13
+            Text: |-
+                ="Status:"
+            Width: =62
+            X: =412
+            Y: =59
+            ZIndex: =11
+
+        lblGalStatus As button:
+            BorderColor: |-
+                =Switch(
+                    ThisItem.Status.Value,
+                    "New", ColorValue("#BFDBFE"),
+                    "Assigned", ColorValue("#86EFAC"),
+                    "Resolved", ColorValue("#FCD34D"),
+                    ColorValue("#CBD5E1")
+                )
+            Color: |-
+                =Switch(
+                    ThisItem.Status.Value,
+                    "New", ColorValue("#1D4ED8"),
+                    "Assigned", ColorValue("#166534"),
+                    "Resolved", ColorValue("#92400E"),
+                    ColorValue("#334155")
+                )
+            DisabledBorderColor: =RGBA(244, 244, 244, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: |-
+                =Switch(
+                    ThisItem.Status.Value,
+                    "New", ColorValue("#DBEAFE"),
+                    "Assigned", ColorValue("#DCFCE7"),
+                    "Resolved", ColorValue("#FEF3C7"),
+                    ColorValue("#F1F5F9")
+                )
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            Height: =30
+            HoverBorderColor: =App.Theme.Colors.Darker10
+            HoverColor: =App.Theme.Colors.PrimaryForeground
+            HoverFill: =App.Theme.Colors.Darker10
+            PressedBorderColor: =App.Theme.Colors.Darker40
+            PressedColor: =Self.Color
+            PressedFill: =App.Theme.Colors.Darker40
+            Size: =12
+            Text: =ThisItem.Status.Value
+            Width: =87
+            X: =488
+            Y: =60
+            ZIndex: =12
+
+        Icon1 As icon.VerticalLine:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: |-
+                =ColorValue("#E2E8F0")
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            FocusedBorderThickness: =0.5
+            Height: =86
+            Icon: =Icon.VerticalLine
+            Width: =42
+            X: =370
+            Y: =16
+            ZIndex: =13
+
+    btnGoDispatch As button:
+        BorderColor: =App.Theme.Colors.Primary
+        BorderStyle: =BorderStyle.None
+        Color: =Color.White
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#DC2626")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =61
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        OnSelect: =Navigate(DispatchScreen, ScreenTransition.Fade)
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =24
+        Text: ="Dispatch Volunteer"
+        Width: =565
+        X: =38
+        Y: =862
+        ZIndex: =12
+
+    btnGoCreateShift As button:
+        BorderColor: =App.Theme.Colors.Primary
+        Color: =Color.White
+        DisabledBorderColor: =RGBA(244, 244, 244, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: |-
+            =ColorValue("#2563EB")
+        Font: =App.Theme.Font
+        FontWeight: =FontWeight.Bold
+        Height: =61
+        HoverBorderColor: =App.Theme.Colors.Darker10
+        HoverColor: =App.Theme.Colors.PrimaryForeground
+        HoverFill: =App.Theme.Colors.Darker10
+        OnSelect: =Navigate(CreateShiftScreen, ScreenTransition.Fade)
+        PressedBorderColor: =App.Theme.Colors.Darker40
+        PressedColor: =Self.Color
+        PressedFill: =App.Theme.Colors.Darker40
+        Size: =24
+        Text: ="Create Shift"
+        Width: =565
+        X: =38
+        Y: =943
+        ZIndex: =13
+
+    Image10 As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =95
+        Image: ='ChatGPT Image May 7, 2026, 02_13_53 PM'
+        Width: =320
+        X: =160
+        Y: =1025
+        ZIndex: =14
+
+    btnRefreshDashboard As image:
+        BorderColor: =App.Theme.Colors.Darker40
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Height: =50
+        Image: ='ChatGPT Image May 7, 2026, 02_24_35 PM'
+        OnSelect: |-
+            =Refresh(Incidents);
+            Refresh(Volunteers);
+            Notify("Dashboard refreshed.", NotificationType.Success)
+        Width: =50
+        X: =550
+        Y: =12
+        ZIndex: =15
+

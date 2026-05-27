@@ -1,0 +1,299 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  CreateShiftScreen:
+    Properties:
+      Fill: =ColorValue("#F8FAFC")
+    Children:
+      - btnCreateShiftBack:
+          Control: ModernButton@1.0.0
+          Properties:
+            Align: =Align.Justify
+            Appearance: =ButtonAppearance.Secondary
+            BasePaletteColor: =Color.Transparent
+            BorderColor: =Color.Transparent
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =0
+            Color: =ColorValue("#2563EB")
+            OnSelect: =Navigate(AdminDashboardScreen, ScreenTransition.Fade)
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Text: ="< Back"
+            Width: =113
+            X: =10
+            Y: =5
+      - lblCreateShiftTitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#0F172A")
+            FontWeight: =FontWeight.Bold
+            Size: =34
+            Text: ="Create Shift"
+            Width: =291
+            X: =175
+            Y: =43
+      - lblCreateShiftSubtitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#64748B")
+            Height: =52
+            Size: =16
+            Text: ="Assign a volunteer to a duty shift."
+            X: =40
+            Y: =95
+      - lblShiftVolunteer:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Bold
+            Height: =39
+            Size: =23
+            Text: ="Volunteer"
+            Width: =155
+            X: =21
+            Y: =159
+      - drpShiftVolunteer:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            BorderColor: =ColorValue("#CBD5E1")
+            ChevronBackground: =ColorValue("#FFFFFF")
+            ChevronFill: =ColorValue("#2563EB")
+            Color: =ColorValue("#0F172A")
+            Fill: =ColorValue("#FFFFFF")
+            FontWeight: =FontWeight.Semibold
+            HoverBorderColor: =ColorValue("#94A3B8")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#F8FAFC")
+            Items: =Volunteers
+            Items.Value: =Name
+            PressedBorderColor: =ColorValue("#2563EB")
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#EFF6FF")
+            SelectionColor: =ColorValue("#1D4ED8")
+            SelectionFill: =ColorValue("#DBEAFE")
+            Size: =20
+            X: =33
+            Y: =216
+      - lblShiftDate:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Bold
+            Height: =48
+            Size: =23
+            Text: ="Shift Date"
+            Width: =166
+            X: =21
+            Y: =301
+      - dateShift:
+          Control: Classic/DatePicker@2.6.0
+          Properties:
+            BorderColor: =ColorValue("#CBD5E1")
+            Color: =ColorValue("#0F172A")
+            Fill: =ColorValue("#FFFFFF")
+            FontWeight: =FontWeight.Semibold
+            IconBackground: =ColorValue("#FFFFFF")
+            IconFill: =Color.Black
+            Size: =20
+            X: =33
+            Y: =361
+      - lblStartTime:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Bold
+            Height: =48
+            Size: =23
+            Text: ="Start Time"
+            Width: =166
+            X: =21
+            Y: =446
+      - txtStartTime:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderColor: =ColorValue("#CBD5E1")
+            Color: =ColorValue("#0F172A")
+            Default: =""
+            Fill: =ColorValue("#FFFFFF")
+            FontWeight: =FontWeight.Semibold
+            HintText: ="08:00"
+            HoverBorderColor: =ColorValue("#94A3B8")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#F8FAFC")
+            PressedBorderColor: =ColorValue("#2563EB")
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#EFF6FF")
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =575
+            X: =33
+            Y: =506
+      - lblEndTime:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Bold
+            Height: =48
+            Size: =23
+            Text: ="End Time"
+            Width: =166
+            X: =21
+            Y: =591
+      - txtEndTime:
+          Control: Classic/TextInput@2.3.2
+          Properties:
+            BorderColor: =ColorValue("#CBD5E1")
+            Color: =ColorValue("#0F172A")
+            Default: =""
+            Fill: =ColorValue("#FFFFFF")
+            FontWeight: =FontWeight.Semibold
+            HintText: ="14:00"
+            HoverBorderColor: =ColorValue("#94A3B8")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#F8FAFC")
+            PressedBorderColor: =ColorValue("#2563EB")
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#EFF6FF")
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =575
+            X: =33
+            Y: =651
+      - lblShiftRole:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Bold
+            Height: =48
+            Size: =23
+            Text: ="Role"
+            Width: =166
+            X: =22
+            Y: =736
+      - drpShiftRole:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            BorderColor: =ColorValue("#CBD5E1")
+            ChevronBackground: =ColorValue("#FFFFFF")
+            ChevronFill: =ColorValue("#2563EB")
+            Color: =ColorValue("#0F172A")
+            Fill: =ColorValue("#FFFFFF")
+            FontWeight: =FontWeight.Semibold
+            HoverBorderColor: =ColorValue("#94A3B8")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#F8FAFC")
+            Items: =["First Aider", "Paramedic", "Nurse", "Team Lead"]
+            Items.Value: =Value
+            PressedBorderColor: =ColorValue("#2563EB")
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#EFF6FF")
+            SelectionColor: =ColorValue("#1D4ED8")
+            SelectionFill: =ColorValue("#DBEAFE")
+            Size: =20
+            X: =33
+            Y: =796
+      - lblShiftSector:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#334155")
+            FontWeight: =FontWeight.Bold
+            Height: =48
+            Size: =23
+            Text: ="Sector"
+            Width: =166
+            X: =22
+            Y: =881
+      - drpShiftSector:
+          Control: Classic/DropDown@2.3.1
+          Properties:
+            BorderColor: =ColorValue("#CBD5E1")
+            ChevronBackground: =ColorValue("#FFFFFF")
+            ChevronFill: =ColorValue("#2563EB")
+            Color: =ColorValue("#0F172A")
+            Fill: =ColorValue("#FFFFFF")
+            FontWeight: =FontWeight.Semibold
+            HoverBorderColor: =ColorValue("#94A3B8")
+            HoverColor: =ColorValue("#0F172A")
+            HoverFill: =ColorValue("#F8FAFC")
+            Items: =["Main Stage", "Food Court", "Entry Gate", "Camping Area", "Roaming"]
+            Items.Value: =Value
+            PressedBorderColor: =ColorValue("#2563EB")
+            PressedColor: =ColorValue("#0F172A")
+            PressedFill: =ColorValue("#EFF6FF")
+            SelectionColor: =ColorValue("#1D4ED8")
+            SelectionFill: =ColorValue("#DBEAFE")
+            Size: =20
+            X: =33
+            Y: =941
+      - btnCreateShift:
+          Control: Classic/Button@2.2.0
+          Properties:
+            Color: =Color.White
+            Fill: =ColorValue("#2563EB")
+            FontWeight: =FontWeight.Bold
+            Height: =61
+            OnSelect: |-
+              =If(
+                  IsBlank(drpShiftVolunteer.Selected.Name) ||
+                  IsBlank(dateShift.SelectedDate) ||
+                  IsBlank(txtStartTime.Text) ||
+                  IsBlank(txtEndTime.Text) ||
+                  IsBlank(drpShiftRole.Selected.Value) ||
+                  IsBlank(drpShiftSector.Selected.Value),
+
+                  Notify(
+                      "Please complete all shift fields.",
+                      NotificationType.Error
+                  ),
+
+                  Set(
+                      varNewShiftID,
+                      "S-" & Text(Today(), "yyyymmdd") & "-" & Text(CountRows(Shifts) + 1, "000")
+                  );
+
+                  Patch(
+                      Shifts,
+                      Defaults(Shifts),
+                      {
+                          Title: varNewShiftID,
+                          ShiftID: varNewShiftID,
+                          VolunteerName: drpShiftVolunteer.Selected.Name,
+                          ShiftDate: dateShift.SelectedDate,
+                          StartTime: txtStartTime.Text,
+                          EndTime: txtEndTime.Text,
+                          Role: {Value: drpShiftRole.Selected.Value},
+                          Sector: {Value: drpShiftSector.Selected.Value}
+                      }
+                  );
+
+                  Notify(
+                      "Shift created successfully.",
+                      NotificationType.Success
+                  );
+
+                  Reset(txtStartTime);
+                  Reset(txtEndTime);
+
+                  Navigate(
+                      AdminDashboardScreen,
+                      ScreenTransition.Fade
+                  )
+              )
+            Text: ="CREATE SHIFT"
+            Width: =575
+            X: =33
+            Y: =1034

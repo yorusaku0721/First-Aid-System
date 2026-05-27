@@ -1,0 +1,292 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  FirstAidGuideScreen:
+    Children:
+      - btnGuideBack:
+          Control: ModernButton@1.0.0
+          Properties:
+            Align: =Align.Justify
+            Appearance: =ButtonAppearance.Secondary
+            BorderStyle: =BorderStyle.None
+            Color: =ColorValue("#2563EB")
+            OnSelect: =Navigate(ResidentSOSScreen, ScreenTransition.Fade)
+            Text: ="< Back"
+            Width: =113
+            X: =10
+            Y: =5
+      - lblGuideTitle:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#0F172A")
+            FontWeight: =FontWeight.Semibold
+            Size: =24
+            Text: ="First Aid Guide"
+            Width: =290
+            Y: =253
+      - lblSOSHeader_1:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#991B1B")
+            FontWeight: =FontWeight.Bold
+            Height: =88
+            Size: =28
+            Text: ="Request Medical Assistance"
+            Width: =505
+            X: =67
+            Y: =40
+      - lblSOSSubtitle_1:
+          Control: Label@2.5.1
+          Properties:
+            Align: =Align.Center
+            Color: =ColorValue("#64748B")
+            Size: =12
+            Text: ="Submit your location and emergency details so the first aid team can respond quickly."
+            Width: =436
+            X: =102
+            Y: =98
+      - Rectangle1_2:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =ColorValue("#E2E8F0")
+            Height: =1
+            Width: =Parent.Width
+            Y: =167
+      - Rectangle1_3:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =ColorValue("#E2E8F0")
+            Height: =1
+            Width: =Parent.Width
+            Y: =240
+      - btnResidentEmergencySOS_1:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#2563EB"),
+                  ColorValue("#CBD5E1")
+              )
+            BorderThickness: =1
+            Color: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#FFFFFF"),
+                  ColorValue("#334155")
+              )
+            Fill: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#2563EB"),
+                  ColorValue("#FFFFFF")
+              )
+            Height: =42
+            HoverColor: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#FFFFFF"),
+                  ColorValue("#334155")
+              )
+            HoverFill: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#2563EB"),
+                  ColorValue("#F8FAFC")
+              )
+            OnSelect: |-
+              =Navigate(ResidentSOSScreen, ScreenTransition.Fade);
+              Set(varSelectedTab, "Emergency SOS")
+            PressedFill: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#1D4ED8"),
+                  ColorValue("#EFF6FF")
+              )
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Size: =16
+            Text: ="Emergency SOS"
+            Width: =181
+            X: =73
+            Y: =184
+      - btnResidentFirstAidGuide_1:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: |-
+              =If(
+                  varSelectedTab = "First Aid Guide",
+                  ColorValue("#2563EB"),
+                  ColorValue("#CBD5E1")
+              )
+            BorderThickness: =1
+            Color: |-
+              =If(
+                  varSelectedTab = "First Aid Guide",
+                  ColorValue("#FFFFFF"),
+                  ColorValue("#334155")
+              )
+            Fill: |-
+              =If(
+                  varSelectedTab = "First Aid Guide",
+                  ColorValue("#2563EB"),
+                  ColorValue("#FFFFFF")
+              )
+            Height: =42
+            HoverColor: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#FFFFFF"),
+                  ColorValue("#334155")
+              )
+            HoverFill: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#2563EB"),
+                  ColorValue("#F8FAFC")
+              )
+            OnSelect: |-
+              =Navigate(FirstAidGuideScreen, ScreenTransition.Fade);
+              Set(varSelectedTab, "First Aid Guide")
+            PressedColor: |-
+              =If(
+                  varSelectedTab = "Emergency SOS",
+                  ColorValue("#1D4ED8"),
+                  ColorValue("#EFF6FF")
+              )
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Size: =16
+            Text: ="First Aid Guide"
+            Width: =181
+            X: =374
+            Y: =184
+      - lblGuideSubtitle:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#64748B")
+            Size: =14
+            Text: ="Quick reference for common emergencies. Always call 000 in a life-threatening emergency."
+            X: =33
+            Y: =304
+      - btnCPRCard:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#E2E8F0")
+            DisabledColor: =
+            DisabledFill: =Color.White
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =Color.White
+            Height: =184
+            Text: =""
+            Width: =560
+            X: =40
+            Y: =400
+      - lblCPRTitle:
+          Control: Label@2.5.1
+          Properties:
+            FontWeight: =FontWeight.Bold
+            Height: =54
+            Text: ="❤️ CPR"
+            Width: =121
+            X: =67
+            Y: =404
+      - lblCPRContent:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#475569")
+            Height: =145
+            Size: =16
+            Text: |-
+              ="1. Check danger and response." & Char(10) &
+              "2. Call 000 and ask for an AED." & Char(10) &
+              "3. Open airway and check breathing." & Char(10) &
+              "4. If not breathing normally, start CPR."
+            Width: =513
+            X: =63
+            Y: =439
+      - btnCPRCard_1:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#E2E8F0")
+            DisabledColor: =
+            DisabledFill: =Color.White
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =Color.White
+            Height: =184
+            Text: =""
+            Width: =560
+            X: =40
+            Y: =623
+      - lblBleedingTitle:
+          Control: Label@2.5.1
+          Properties:
+            FontWeight: =FontWeight.Bold
+            Text: |-
+              ="🩸 Severe Bleeding"
+            Width: =294
+            X: =67
+            Y: =623
+      - lblBleedingContent:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#475569")
+            Height: =162
+            Size: =16
+            Text: |-
+              ="1. Apply firm direct pressure." & Char(10) &
+              "2. Use a dressing or clean cloth." & Char(10) &
+              "3. Keep pressure until help arrives." & Char(10) &
+              "4. Call 000 for severe bleeding."
+            Width: =537
+            X: =63
+            Y: =657
+      - btnCPRCard_2:
+          Control: Classic/Button@2.2.0
+          Properties:
+            BorderColor: =ColorValue("#E2E8F0")
+            DisabledColor: =
+            DisabledFill: =Color.White
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =Color.White
+            Height: =184
+            Text: =""
+            Width: =560
+            X: =40
+            Y: =844
+      - lblBurnTitle:
+          Control: Label@2.5.1
+          Properties:
+            FontWeight: =FontWeight.Bold
+            Height: =50
+            Text: |-
+              ="🔥 Burn"
+            Width: =140
+            X: =67
+            Y: =852
+      - lblBurnContent:
+          Control: Label@2.5.1
+          Properties:
+            Color: =ColorValue("#475569")
+            Height: =116
+            Size: =16
+            Text: |-
+              ="1. Cool burn under running water." & Char(10) &
+              "2. Remove tight items if safe." & Char(10) &
+              "3. Cover with clean dressing." & Char(10) &
+              "4. Seek medical help for serious burns."
+            Width: =537
+            X: =63
+            Y: =902
